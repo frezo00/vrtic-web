@@ -1,0 +1,41 @@
+.image-slides {
+  &__container {
+    min-height: 800px;
+    background: url('/assets/images/gtk.jpg') left center no-repeat;
+    background-size: cover;
+  }
+  &__content {
+    padding: 16px;
+  }
+  &__title {
+    margin: 0;
+    font-size: 60px;
+    text-align: center;
+    color: rgba($color: #ffffff, $alpha: 1);
+  }
+  &__description {
+    margin: 0px;
+    padding: 32px 0;
+    color: rgba($color: #ffffff, $alpha: 0.7);
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.6em;
+  }
+  &__link-btn {
+    padding: 20px 60px;
+    text-decoration: none;
+    border-radius: 36px;
+    background-color: #1db954;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #4bdf80;
+    }
+  }
+}

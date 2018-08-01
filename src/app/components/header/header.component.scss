@@ -1,0 +1,49 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  justify-content: center;
+}
+
+.header {
+  &__container {
+    background-color: transparent;
+  }
+  &__logo {
+    padding: 1.2em;
+  }
+  &__app-name {
+    color: rgba($color: #ffffff, $alpha: 0.9);
+    margin: 0;
+  }
+}
+
+.header__navigation {
+  &__container {
+    padding: 0 1.2em;
+  }
+  &__box {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &__item {
+    text-align: center;
+    padding: 1em;
+    margin: 0.1em;
+    cursor: pointer;
+  }
+  &__link {
+    color: rgba($color: #ffffff, $alpha: 0.7);
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      color: rgba($color: #ffffff, $alpha: 0.9);
+    }
+  }
+}
