@@ -1,8 +1,14 @@
+@import '~src/_variables.scss';
+
 .image-slides {
   &__container {
-    min-height: 800px;
+    min-height: 100vh;
     background: url('/assets/images/gtk.jpg') left center no-repeat;
     background-size: cover;
+
+    @include xsmall {
+      min-height: 640px;
+    }
   }
   &__content {
     padding: 16px;
@@ -12,13 +18,17 @@
     font-size: 60px;
     text-align: center;
     color: rgba($color: #ffffff, $alpha: 1);
+
+    @include xsmall {
+      font-size: 48px;
+    }
   }
   &__description {
+    color: rgba($color: #ffffff, $alpha: 0.9);
     margin: 0px;
-    padding: 32px 0;
-    color: rgba($color: #ffffff, $alpha: 0.7);
+    padding: 16px 0;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.4em;
     line-height: 1.6em;
   }
   &__link-btn {

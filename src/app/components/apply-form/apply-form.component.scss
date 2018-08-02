@@ -1,0 +1,20 @@
+@import '~src/_variables.scss';
+
+.form {
+  &__header {
+    height: 340px;
+    width: 100%;
+    background: linear-gradient(
+      to bottom,
+      #56abe6 0,
+      #5cb8f6 25%,
+      #63bdfb 50%,
+      #66c0fc 75%,
+      #64befa 100%
+    );
+
+    @include xsmall {
+      height: 250px;
+    }
+  }
+}

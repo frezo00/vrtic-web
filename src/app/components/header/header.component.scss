@@ -5,12 +5,13 @@
   width: 100%;
   z-index: 1;
   justify-content: center;
+  background-color: transparent;
 }
 
 .header {
-  &__container {
+  /* &__container {
     background-color: transparent;
-  }
+  } */
   &__logo {
     padding: 1.2em;
   }
@@ -31,11 +32,11 @@
   }
   &__item {
     text-align: center;
-    padding: 1em;
-    margin: 0.1em;
     cursor: pointer;
   }
   &__link {
+    padding: 1em;
+    margin: 0.1em;
     color: rgba($color: #ffffff, $alpha: 0.7);
     text-decoration: none;
     font-size: 1.2em;
