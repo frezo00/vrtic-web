@@ -10,7 +10,7 @@
   }
 
   &__label {
-    margin-top: 8px;
+    margin: 8px 0;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.7);
     padding-left: 20px;
@@ -53,9 +53,41 @@
     font-family: Roboto, 'Helvetica Neue', sans-serif;
   }
 
+  &__select {
+    position: relative;
+    appearance: none;
+    overflow: hidden;
+    background: url('/assets/images/drop-arrow.png') no-repeat 90% 50%;
+    background-size: 16px;
+
+    &::-ms-expand {
+      display: none;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:required:invalid {
+      color: #ccc;
+    }
+    &::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-color: #1db954;
+    }
+  }
+  &__option[value=''][disabled] {
+    display: none;
+  }
+  &__option {
+    color: #333;
+  }
+
   &__error-msg {
     font-size: 0.8em;
-    padding: 0 4px;
+    padding-left: 20px;
+    color: #e54352;
+    margin-top: 4px;
     display: none;
   }
 

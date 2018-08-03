@@ -6,6 +6,8 @@ import {
   ReactiveFormsModule
 } from '../../../node_modules/@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { ImageSlidesComponent } from './image-slides/image-slides.component';
@@ -28,7 +30,9 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule
   ],
   exports: [HeaderComponent],
   providers: []

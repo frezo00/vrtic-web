@@ -9,36 +9,60 @@
     <form [formGroup]="applyForm" (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100%" fxFlex.md="80%" fxFlex.gt-md="60%"
       fxLayoutGap="24px">
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="24px">
-        <div class="form__field" fxLayout="column" fxLayoutGap="8px" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Ime</p>
           <input class="form__input" type="text" formControlName="firstName" required>
-          <span *ngIf="firstName.hasError('required')" class="form__error-msg">{{firstName.hasError('required')}}</span>
+          <span *ngIf="firstName.hasError('required')" class="form__error-msg">Ovo polje je obavezno</span>
         </div>
-        <div class="form__field" fxLayout="column" fxLayoutGap="8px" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Prezime</p>
           <input class="form__input" type="text" formControlName="lastName" required>
           <span *ngIf="lastName.hasError('required')" class="form__error-msg">Error message</span>
         </div>
       </div>
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="24px">
-        <div class="form__field" fxLayout="column" fxLayoutGap="8px" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Datum rođenja</p>
-          <input class="form__input" type="text" formControlName="birthdate" required>
-          <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
+          <div class="form__date__container" fxLayoutAlign="space-between center" fxLayoutGap="8px">
+            <div class="form__date__content" fxLayout="column" fxFlex="25%">
+              <select class="form__input form__select" formControlName="birthdate" required>
+                <option class="form__option" value="" disabled selected>Dan</option>
+                <option class="form__option" value="1">01</option>
+                <option class="form__option" value="2">02</option>
+              </select>
+              <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
+            </div>
+            <div class="form__date__content" fxLayout="column" fxFlex="35%">
+              <select class="form__input form__select" formControlName="birthdate" required>
+                <option class="form__option" value="" disabled selected>Mjesec</option>
+                <option class="form__option" value="1">01</option>
+                <option class="form__option" value="2">02</option>
+              </select>
+              <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
+            </div>
+            <div class="form__date__content" fxLayout="column" fxFlex="40%">
+              <select class="form__input form__select" formControlName="birthdate" required>
+                <option class="form__option" value="" disabled selected>Godina</option>
+                <option class="form__option" value="1">01</option>
+                <option class="form__option" value="2">02</option>
+              </select>
+              <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
+            </div>
+          </div>
         </div>
-        <div class="form__field" fxLayout="column" fxLayoutGap="8px" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Ime oba roditelja</p>
           <input class="form__input" type="text" formControlName="parentsNames" required>
           <span *ngIf="parentsNames.hasError('required')" class="form__error-msg">Error message</span>
         </div>
       </div>
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="24px">
-        <div class="form__field" fxLayout="column" fxLayoutGap="8px" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Telefon / Mobitel</p>
           <input class="form__input" type="text" formControlName="phoneNumber" required>
           <span *ngIf="phoneNumber.hasError('required')" class="form__error-msg">Error message</span>
         </div>
-        <div class="form__field" fxLayout="column" fxLayoutGap="8px" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Email
             <span>(nije obavezno)</span>
           </p>
@@ -47,14 +71,18 @@
         </div>
       </div>
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="24px">
-        <div class="form__field" fxLayout="column" fxLayoutGap="8px" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Napomena
             <span>(nije obavezno)</span>
           </p>
           <textarea class="form__input form__textarea" formControlName="message" rows="4"></textarea>
           <span *ngIf="message.hasError('required')" class="form__error-msg">Error message</span>
         </div>
+        <div class="form__field" fxLayoutAlign="center center" fxFlex="100%" fxFlex.gt-xs="50%">
+          <re-captcha (resolved)="resolved($event)" formControlName="recaptcha" siteKey="6LdOJmgUAAAAALV3oB-vD65j0WcoH4_wkhaww7vp"></re-captcha>
+        </div>
       </div>
+
       <div class="form__action" fxFlex="100%" fxLayoutAlign="center center">
         <button type="submit" class="form__button" [disabled]="applyForm.invalid">Pošalji</button>
       </div>
