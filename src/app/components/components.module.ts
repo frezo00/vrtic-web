@@ -8,6 +8,8 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HeaderComponent } from './header/header.component';
 import { ImageSlidesComponent } from './image-slides/image-slides.component';
@@ -32,7 +34,9 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     ReactiveFormsModule,
     FlexLayoutModule,
     RecaptchaModule.forRoot(),
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    NgxMyDatePickerModule.forRoot(),
+    FontAwesomeModule
   ],
   exports: [HeaderComponent],
   providers: []

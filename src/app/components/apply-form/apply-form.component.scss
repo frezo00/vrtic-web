@@ -34,17 +34,6 @@
       outline: none;
       border-color: #56abe6;
     }
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: 12px;
-      top: 12px;
-      width: 16px;
-      height: 16px;
-      background-color: #56abe6;
-      border-radius: 50%;
-    }
   }
 
   &__textarea {
@@ -144,5 +133,23 @@
     color: rgba($color: #ffffff, $alpha: 0.9);
     margin: 0;
     font-size: 18px;
+  }
+}
+.form__date {
+  &-container {
+    position: relative;
+  }
+  &-input {
+    width: 100%;
+    border-right: none;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  &-icon {
+    background-color: white;
+    border-left: none;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    cursor: pointer;
   }
 }

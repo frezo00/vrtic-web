@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { INgxMyDpOptions } from 'ngx-mydatepicker';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { validateEmail, validatePhoneNumber } from '../../validators';
 
 @Component({
@@ -23,6 +25,13 @@ export class ApplyFormComponent implements OnInit {
   message: FormControl;
   recaptcha: FormControl;
 
+  dateIcon = faCalendarAlt;
+
+  myOptions: INgxMyDpOptions = {
+    // other options...
+    dateFormat: 'dd.mm.yyyy'
+  };
+
   constructor(public fb: FormBuilder) {}
 
   ngOnInit() {
@@ -39,7 +48,7 @@ export class ApplyFormComponent implements OnInit {
       Validators.required,
       Validators.maxLength(20)
     ]);
-    this.birthdate = new FormControl('', Validators.required);
+    this.birthdate = new FormControl(null, Validators.required);
     this.parentsNames = new FormControl('', [
       Validators.required,
       Validators.maxLength(40)
@@ -72,5 +81,24 @@ export class ApplyFormComponent implements OnInit {
 
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response ${captchaResponse}:`);
+  }
+
+  setDate(): void {
+    // Set today date using the patchValue function
+    const date = new Date();
+    this.applyForm.patchValue({
+      birthdate: {
+        date: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        }
+      }
+    });
+  }
+
+  clearDate(): void {
+    // Clear the date using the patchValue function
+    this.applyForm.patchValue({ birthdate: null });
   }
 }

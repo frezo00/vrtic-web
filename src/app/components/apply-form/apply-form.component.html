@@ -23,6 +23,17 @@
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="24px">
         <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Datum rođenja</p>
+          <div class="form__date-container" fxLayout="row" fxLayoutAlign="space-between center">
+            <input class="form__input form__date-input" ngx-mydatepicker formControlName="birthdate" [options]="myOptions" #dp="ngx-mydatepicker"
+              required readonly>
+            <button class="form__input form__date-icon" type="button" (click)="dp.toggleCalendar()">
+              <fa-icon [icon]="dateIcon"></fa-icon>
+            </button>
+          </div>
+          <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
+        </div>
+        <!-- <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
+          <p class="form__label">Datum rođenja</p>
           <div class="form__date__container" fxLayoutAlign="space-between center" fxLayoutGap="8px">
             <div class="form__date__content" fxLayout="column" fxFlex="25%">
               <select class="form__input form__select" formControlName="birthdate" required>
@@ -49,7 +60,7 @@
               <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
           <p class="form__label">Ime oba roditelja</p>
           <input class="form__input" type="text" formControlName="parentsNames" required>
