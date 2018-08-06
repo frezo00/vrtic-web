@@ -9,7 +9,12 @@
     }
   }
 
+  &__field {
+    position: relative;
+  }
+
   &__label {
+    position: relative;
     margin: 8px 0;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.7);
@@ -33,6 +38,20 @@
     &:focus {
       outline: none;
       border-color: #56abe6;
+    }
+    &.ng-touched.ng-invalid {
+      border-color: #e54352;
+    }
+    &.ng-touched.ng-dirty.ng-valid {
+      border-color: #1db954;
+    }
+    &:required ~ .form__label::before {
+      content: '*';
+      position: absolute;
+      top: -2px;
+      left: 8px;
+      color: #e54352;
+      font-size: 18px;
     }
   }
 
@@ -74,10 +93,18 @@
 
   &__error-msg {
     font-size: 0.8em;
+    height: 15px;
     padding-left: 20px;
     color: #e54352;
     margin-top: 4px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &__button {
@@ -140,16 +167,16 @@
     position: relative;
   }
   &-input {
-    width: 100%;
-    border-right: none;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    padding-right: 48px;
   }
   &-icon {
-    background-color: white;
-    border-left: none;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
     cursor: pointer;
+    position: absolute;
+    color: #333;
+    right: 0;
+    top: 34px;
+    padding: 13px 20px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 }
