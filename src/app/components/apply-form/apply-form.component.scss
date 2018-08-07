@@ -35,6 +35,9 @@
     color: #333;
     transition: border-color 0.3s;
 
+    &.hide {
+      display: none;
+    }
     &:focus {
       outline: none;
       border-color: #56abe6;
@@ -59,36 +62,6 @@
     resize: none;
     box-sizing: border-box;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
-  }
-
-  &__select {
-    position: relative;
-    appearance: none;
-    overflow: hidden;
-    background: url('/assets/images/drop-arrow.png') no-repeat 90% 50%;
-    background-size: 16px;
-
-    &::-ms-expand {
-      display: none;
-    }
-    &:focus {
-      outline: none;
-    }
-    &:required:invalid {
-      color: #ccc;
-    }
-    &::after {
-      content: '';
-      width: 20px;
-      height: 20px;
-      background-color: #1db954;
-    }
-  }
-  &__option[value=''][disabled] {
-    display: none;
-  }
-  &__option {
-    color: #333;
   }
 
   &__error-msg {
@@ -175,8 +148,15 @@
     color: #333;
     right: 0;
     top: 34px;
-    padding: 13px 20px;
-    border-top-right-radius: 24px;
-    border-bottom-right-radius: 24px;
+    padding: 13px 20px 13px 0;
+    border-radius: 24px;
+    width: calc(100% - 20px);
+    text-align: right;
+  }
+  &-mobile {
+    background-color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: calc(100% - 42px);
   }
 }

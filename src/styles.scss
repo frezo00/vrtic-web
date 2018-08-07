@@ -7,3 +7,15 @@ body {
   height: 100%;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+ngx-my-date-picker > .ngxmdp > .selector {
+  background-color: rebeccapurple;
+  width: calc(100% - 40px);
+  top: 77px !important;
+  right: 20px;
+
+  &::before,
+  &::after {
+    content: none;
+  }
+}

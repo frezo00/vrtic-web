@@ -30,49 +30,15 @@
             {{birthdate.hasError('required') ? 'Ovo polje je obavezno' : birthdate.hasError('maxlength') ? 'Neispravan format datuma'
             :''}}
           </span>
-          <!-- <div class="form__date-container" fxLayout="row" fxLayoutAlign="space-between center">
-            <input class="form__input form__date-input" ngx-mydatepicker formControlName="birthdate" [options]="myOptions" #dp="ngx-mydatepicker"
-              required readonly>
-            <button class="form__input form__date-icon" type="button" (click)="dp.toggleCalendar()">
-              <fa-icon [icon]="dateIcon"></fa-icon>
-            </button>
-          </div> -->
-          <input class="form__input form__date-input" ngx-mydatepicker formControlName="birthdate" [options]="myOptions" #dp="ngx-mydatepicker"
-            required readonly>
-          <span class="form__date-icon" (click)="dp.toggleCalendar()">
+          <input *ngIf="!!mobileQuery.matches" class="form__input form__date-mobile" type="date" formControlName="birthdate" [min]="minDate|date:'yyyy-MM-dd'"
+            [max]="maxDate|date:'yyyy-MM-dd'" [value]="birthdate.value|date:'yyyy-MM-dd'" required>
+          <input [ngClass]="{'hide': !!mobileQuery.matches}" class="form__input form__date-input" ngx-mydatepicker formControlName="birthdate"
+            [options]="myOptions" #dp="ngx-mydatepicker" required readonly [defaultMonth]="defaultMonth">
+          <span *ngIf="!mobileQuery.matches" class="form__date-icon" (click)="dp.toggleCalendar()">
             <fa-icon [icon]="dateIcon"></fa-icon>
           </span>
           <p class="form__label">Datum rođenja</p>
         </div>
-        <!-- <div class="form__field" fxLayout="column" fxFlex="100%" fxFlex.gt-xs="50%">
-          <p class="form__label">Datum rođenja</p>
-          <div class="form__date__container" fxLayoutAlign="space-between center" fxLayoutGap="8px">
-            <div class="form__date__content" fxLayout="column" fxFlex="25%">
-              <select class="form__input form__select" formControlName="birthdate" required>
-                <option class="form__option" value="" disabled selected>Dan</option>
-                <option class="form__option" value="1">01</option>
-                <option class="form__option" value="2">02</option>
-              </select>
-              <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
-            </div>
-            <div class="form__date__content" fxLayout="column" fxFlex="35%">
-              <select class="form__input form__select" formControlName="birthdate" required>
-                <option class="form__option" value="" disabled selected>Mjesec</option>
-                <option class="form__option" value="1">01</option>
-                <option class="form__option" value="2">02</option>
-              </select>
-              <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
-            </div>
-            <div class="form__date__content" fxLayout="column" fxFlex="40%">
-              <select class="form__input form__select" formControlName="birthdate" required>
-                <option class="form__option" value="" disabled selected>Godina</option>
-                <option class="form__option" value="1">01</option>
-                <option class="form__option" value="2">02</option>
-              </select>
-              <span *ngIf="birthdate.hasError('required')" class="form__error-msg">Error message</span>
-            </div>
-          </div>
-        </div> -->
         <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
           <span [ngClass]="{'active': (parentsNames.touched && parentsNames.invalid)}" class="form__error-msg">
             {{parentsNames.hasError('required') ? 'Ovo polje je obavezno' : parentsNames.hasError('maxlength') ? 'Tekst je predug' :''}}
@@ -84,15 +50,14 @@
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
         <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
           <span [ngClass]="{'active': (phoneNumber.touched && phoneNumber.invalid)}" class="form__error-msg">
-            {{phoneNumber.hasError('required') ? 'Ovo polje je obavezno' : phoneNumber.hasError('maxlength') ? 'Neispravan format telefonskog
-            broja' :''}}
+            {{phoneNumber.hasError('required') ? 'Ovo polje je obavezno' : 'Neispravan format telefonskog broja'}}
           </span>
-          <input class="form__input" type="text" formControlName="phoneNumber" required>
+          <input class="form__input" type="tel" formControlName="phoneNumber" required>
           <p class="form__label">Telefon / Mobitel</p>
         </div>
         <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
           <span [ngClass]="{'active': (email.touched && email.invalid)}" class="form__error-msg">Neispravan email format</span>
-          <input class="form__input" type="text" formControlName="email">
+          <input class="form__input" type="email" formControlName="email">
           <p class="form__label">Email
             <span>(nije obavezno)</span>
           </p>
