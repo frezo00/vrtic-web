@@ -17,6 +17,7 @@ import { NewsComponent } from './news/news.component';
 import { ApplyFormComponent } from './apply-form/apply-form.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { ClickOutsideDirective } from '../directives/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     NewsComponent,
     ApplyFormComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ClickOutsideDirective
   ],
   imports: [
     CommonModule,

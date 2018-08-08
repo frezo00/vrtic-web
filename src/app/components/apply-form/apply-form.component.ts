@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { INgxMyDpOptions, IMyDateModel } from 'ngx-mydatepicker';
+import { INgxMyDpOptions } from 'ngx-mydatepicker';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { validateEmail, validatePhoneNumber } from '../../validators';

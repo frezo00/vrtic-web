@@ -1,11 +1,12 @@
 <div class="header__container" fxFlex="100%" fxFlex.md="90%" fxFlex.gt-md="80%" fxLayoutAlign="space-between center" fxFlexFill>
+  <div [ngClass]="{'show': !!openMenu}" class="mobile-nav-backdrop" (click)="openMenu = !openMenu"></div>
   <div class="header__logo">
     <h2 class="header__app-name">Glazbaonica</h2>
   </div>
-  <div class="header__navigation__container">
+  <nav class="header__navigation__container">
     <ul class="header__navigation__box" fxHide.lt-md fxLayoutAlign="space-around center">
       <li class="header__navigation__item">
-        <a class="header__navigation__link">Početna</a>
+        <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__navigation__link">Početna</a>
       </li>
       <li class="header__navigation__item">
         <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__navigation__link">Prijave</a>
@@ -20,8 +21,34 @@
         <a class="header__navigation__link">Kontakt</a>
       </li>
     </ul>
-    <div class="header__navigation__hamburger" fxHide.gt-sm>
-      <span>Icon</span>
+    <div class="header__side-navigation">
+      <div class="header__mobile-navigation__container" [ngClass]="{'opened': openMenu}">
+        <ul class="header__mobile-navigation__box" fxLayout="column" fxLayoutAlign="space-around start" (click)="openMenu = !openMenu">
+          <li class="header__mobile-navigation__item">
+            <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__mobile-navigation__link">Početna</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">Prijave</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a class="header__mobile-navigation__link">Novosti</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a class="header__mobile-navigation__link">O nama</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a class="header__mobile-navigation__link">Kontakt</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header__icon" fxHide.gt-sm>
+        <button type="button" class="header__icon-button" [ngClass]="{'open-menu': openMenu}" (click)="openMenu = !openMenu" fxLayout="column"
+          fxLayoutAlign="center center" fxLayoutGap="5px">
+          <span class="header__icon-bar"></span>
+          <span class="header__icon-bar"></span>
+          <span class="header__icon-bar"></span>
+        </button>
+      </div>
     </div>
-  </div>
+  </nav>
 </div>
