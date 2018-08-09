@@ -33,7 +33,9 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   date = new Date(new Date().getFullYear() - 9, 0, 1);
   minDate = new Date(new Date().getFullYear() - 8, 0, 1);
   maxDate = new Date(new Date().getFullYear() - 5, 11, 31);
+
   formResult: any;
+  loading = false;
 
   mobileQuery: MediaQueryList;
 
@@ -118,9 +120,17 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
       birthdate: new Date(mobileDate)
     });
   }
+
   updateDesktopDateFormat(desktopDate: any) {
     this.applyForm.patchValue({
       birthdate: new Date(desktopDate)
     });
+  }
+
+  openLoading() {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 5000);
   }
 }

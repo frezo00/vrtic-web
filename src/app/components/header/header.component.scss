@@ -48,14 +48,9 @@
     }
 
     &.active {
-      background-color: #1db954;
-      border-radius: 30px;
-      padding: 12px 24px;
-      font-size: 14px;
-      text-transform: uppercase;
-      font-weight: 600;
       color: white;
-      letter-spacing: 2px;
+      border-bottom: 2px solid;
+      padding-bottom: 8px;
     }
   }
 }

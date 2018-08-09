@@ -19,3 +19,39 @@ ngx-my-date-picker > .ngxmdp > .selector {
     content: none;
   }
 }
+
+.action-button {
+  padding: 20px 60px;
+  margin: 4px 12px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 36px;
+  background-color: #1db954;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: background-color 0.3s;
+
+  &:focus {
+    outline: none;
+  }
+  &.outline {
+    background-color: white;
+    color: #1db954;
+    border-color: #1db954;
+  }
+  &.small {
+    padding: 12px 36px;
+    text-transform: initial;
+    letter-spacing: 0;
+  }
+  &:disabled {
+    background-color: rgba($color: #1db954, $alpha: 0.5);
+  }
+  &:not(:disabled):hover {
+    cursor: pointer;
+    background-color: rgba($color: #1db954, $alpha: 0.7);
+  }
+}

@@ -94,14 +94,18 @@
     letter-spacing: 2px;
     transition: background-color 0.3s;
 
+    &:focus {
+      outline: none;
+    }
+
     &:not(:disabled):hover {
       cursor: pointer;
-      background-color: #4bdf80;
+      background-color: #1db954;
     }
 
     &:disabled {
       cursor: not-allowed;
-      background-color: rgba($color: #4bdf80, $alpha: 0.5);
+      background-color: rgba($color: #1db954, $alpha: 0.5);
     }
   }
 }
@@ -160,4 +164,8 @@
     -moz-appearance: none;
     width: calc(100% - 42px);
   }
+}
+:host {
+  display: flex;
+  flex-direction: column;
 }
