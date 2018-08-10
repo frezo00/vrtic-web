@@ -10,7 +10,7 @@
   <p class="sa-text">Hvala na uspješnoj prijavi za
     <br> Glazbeni Vrtić</p>
   <div class="action-container" fxLayout.lt-md="column" fxLayoutAlign="space-between strech">
-    <button class="action-button small">Ispuni novu prijavu</button>
-    <button class="action-button outline small">Natrag na početnu</button>
+    <button class="action-button small" (click)="onResetForm()">Ispuni novu prijavu</button>
+    <button class="action-button outline small" [routerLink]="[ '/' ]">Natrag na početnu</button>
   </div>
 </div>

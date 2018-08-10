@@ -31,21 +31,7 @@
     font-size: 1.4em;
     line-height: 1.6em;
   }
-  &__link-btn {
-    padding: 20px 60px;
-    text-decoration: none;
-    border-radius: 36px;
-    background-color: #1db954;
-    color: white;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 2px;
-    transition: background-color 0.3s;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #4bdf80;
-    }
+  &__link-btn:hover {
+    background-color: #4bdf80;
   }
 }

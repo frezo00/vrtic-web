@@ -6,8 +6,8 @@
     </div>
   </div>
   <div class="form__content" fxLayoutAlign="center center">
-    <form [formGroup]="applyForm" (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100%" fxFlex.md="80%" fxFlex.gt-md="60%"
-      fxLayoutGap="12px">
+    <form [ngStyle]="{'display': !success ? 'flex' : 'none'}" [formGroup]="applyForm" (ngSubmit)="onSubmit()" fxLayout="column"
+      fxFlex="100%" fxFlex.md="80%" fxFlex.gt-md="60%" fxLayoutGap="12px">
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
         <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
           <span [ngClass]="{'active': (firstName.touched && firstName.invalid)}" class="form__error-msg">
@@ -74,21 +74,17 @@
           </p>
         </div>
         <div class="form__field" fxLayoutAlign="center center" fxFlex="100%" fxFlex.gt-xs="50%">
-          <re-captcha (resolved)="resolved($event)" formControlName="recaptcha" siteKey="6LdOJmgUAAAAALV3oB-vD65j0WcoH4_wkhaww7vp"></re-captcha>
+          <re-captcha formControlName="recaptcha" siteKey="6LdOJmgUAAAAALV3oB-vD65j0WcoH4_wkhaww7vp"></re-captcha>
         </div>
       </div>
 
       <div class="form__action" fxFlex="100%" fxLayoutAlign="center center">
-        <button type="submit" class="form__button" [disabled]="applyForm.invalid">Pošalji</button>
+        <button type="submit" class="action-button" [disabled]="applyForm.invalid">Pošalji</button>
       </div>
     </form>
+    <app-success-confirm *ngIf="!!success" (resetForm)="resetForm()"></app-success-confirm>
   </div>
 </div>
 
-<app-success-confirm></app-success-confirm>
-
-<div class="form__action" fxFlex="100%" fxLayoutAlign="center center">
-  <button type="button" class="form__button" (click)="openLoading()">Loading</button>
-</div>
-
-<!-- <app-loading *ngIf="!!loading" fxLayout="column" fxLayoutAlign="center center"></app-loading> -->
+<app-loading *ngIf="!!loading" fxLayout="column" fxLayoutAlign="center center"></app-loading>
+<app-modal *ngIf="!!openModal" (cancel)="openModal = false" (confirm)="route.navigateByUrl(targetUrl)"></app-modal>

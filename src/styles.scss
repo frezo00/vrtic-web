@@ -52,6 +52,7 @@ ngx-my-date-picker > .ngxmdp > .selector {
   }
   &:not(:disabled):hover {
     cursor: pointer;
+    color: white;
     background-color: rgba($color: #1db954, $alpha: 0.7);
   }
 }

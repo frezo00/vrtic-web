@@ -10,6 +10,9 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { validateEmail, validatePhoneNumber } from '../../validators';
 import { myDatePickerOptions } from '../common/ngx-mydatepicker.options';
+import { Router } from '../../../../node_modules/@angular/router';
+import { ApplicantService } from './applicant.service';
+import { Applicant } from '../../models/applicant.model';
 
 @Component({
   selector: 'app-apply-form',
@@ -36,13 +39,18 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
 
   formResult: any;
   loading = false;
+  success = false;
+  openModal = false;
+  targetUrl: string;
 
   mobileQuery: MediaQueryList;
 
   constructor(
     public fb: FormBuilder,
     public changeDetectorRef: ChangeDetectorRef,
-    public media: MediaMatcher
+    public media: MediaMatcher,
+    public route: Router,
+    public applicantService: ApplicantService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 599px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -58,10 +66,11 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.openModal = true;
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  initFormControls() {
+  initFormControls(): void {
     this.firstName = new FormControl('', [
       Validators.required,
       Validators.maxLength(20)
@@ -84,7 +93,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     this.recaptcha = new FormControl(null, Validators.required);
   }
 
-  initForm() {
+  initForm(): void {
     this.applyForm = this.fb.group({
       firstName: this.firstName,
       lastName: this.lastName,
@@ -98,39 +107,64 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log('val', this.birthdate);
-    let newDate: Date;
-    if (this.birthdate.value.jsdate) {
-      newDate = new Date(this.birthdate.value.jsdate);
-      this.updateDesktopDateFormat(this.birthdate.value.jsdate);
-    } else {
-      newDate = new Date(this.birthdate.value);
-      this.updateMobileDateFormat(this.birthdate.value);
+    if (this.applyForm.valid) {
+      let newDate: Date;
+      if (this.birthdate.value.jsdate) {
+        newDate = new Date(this.birthdate.value.jsdate);
+        this.updateDesktopDateFormat(this.birthdate.value.jsdate);
+      } else {
+        newDate = new Date(this.birthdate.value);
+        this.updateMobileDateFormat(this.birthdate.value);
+      }
+      const applicantData = {
+        ...this.applyForm.value,
+        dateCreated: new Date()
+      } as Applicant;
+      console.log('new Date', newDate);
+      console.log('form value: ', this.applyForm.value);
+      console.log('applicantData: ', applicantData);
+      this.saveApplicant(applicantData);
     }
-    console.log('new Date', newDate);
-    console.log('form value: ', this.applyForm.value);
   }
 
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response ${captchaResponse}:`);
-  }
-
-  updateMobileDateFormat(mobileDate: string) {
+  updateMobileDateFormat(mobileDate: string): void {
     this.applyForm.patchValue({
       birthdate: new Date(mobileDate)
     });
   }
 
-  updateDesktopDateFormat(desktopDate: any) {
+  updateDesktopDateFormat(desktopDate: any): void {
     this.applyForm.patchValue({
       birthdate: new Date(desktopDate)
     });
   }
 
-  openLoading() {
+  saveApplicant(applicantData: Applicant) {
     this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-    }, 5000);
+    this.applicantService
+      .addApplicant(applicantData)
+      .then(() => {
+        this.loading = false;
+        this.success = true;
+        this.recaptcha.reset();
+        this.applyForm.reset();
+      })
+      .catch(error => console.log('error occured'));
+  }
+
+  resetForm(): void {
+    this.success = false;
+    this.recaptcha.reset();
+    this.applyForm.reset();
+  }
+
+  canDeactivate(targetUrl: string, currentUrl: string): boolean {
+    this.targetUrl = '/' + targetUrl;
+    this.route.navigateByUrl(currentUrl);
+
+    if (!this.openModal) {
+      return (this.openModal = true);
+    }
+    return true;
   }
 }

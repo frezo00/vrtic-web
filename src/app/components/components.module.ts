@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
 import { ClickOutsideDirective } from '../directives/click-outside.directive';
 import { LoadingComponent } from './loading/loading.component';
 import { SuccessConfirmComponent } from './success-confirm/success-confirm.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SuccessConfirmComponent } from './success-confirm/success-confirm.compo
     PageNotFoundComponent,
     LoadingComponent,
     ClickOutsideDirective,
-    SuccessConfirmComponent
+    SuccessConfirmComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

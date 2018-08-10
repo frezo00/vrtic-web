@@ -79,35 +79,6 @@
       opacity: 1;
     }
   }
-
-  &__button {
-    padding: 20px 60px;
-    margin: 8px 0;
-    text-decoration: none;
-    border: none;
-    border-radius: 36px;
-    background-color: #1db954;
-    color: white;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 2px;
-    transition: background-color 0.3s;
-
-    &:focus {
-      outline: none;
-    }
-
-    &:not(:disabled):hover {
-      cursor: pointer;
-      background-color: #1db954;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      background-color: rgba($color: #1db954, $alpha: 0.5);
-    }
-  }
 }
 
 .form__header {
