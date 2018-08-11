@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ApplyFormComponent } from './components/apply-form/apply-form.component';
 import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
 import { PendingChangesGuard } from './guards/pending-changes.guard';
+import { ApplicantsListComponent } from './components/applicants-list/applicants-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
     component: ApplyFormComponent,
     canDeactivate: [PendingChangesGuard]
   },
+  { path: 'vrtic', component: ApplicantsListComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

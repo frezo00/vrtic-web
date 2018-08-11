@@ -1,10 +1,10 @@
 export interface Applicant {
   firstName: string;
   lastName: string;
-  birthdate: Date;
+  birthdate: any;
   parentsNames: string;
   phoneNumber: string;
-  dateCreated: Date;
+  dateCreated: any;
   email?: string;
   message?: string;
   recaptcha?: string;

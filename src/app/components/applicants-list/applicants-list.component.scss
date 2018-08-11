@@ -1,0 +1,67 @@
+@import '~src/_variables.scss';
+
+.applicants-list__header {
+  min-height: 340px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    #e65656 0,
+    #f65c5c 25%,
+    #fb6363 50%,
+    #fc6666 75%,
+    #fa6464 100%
+  );
+
+  @include xsmall {
+    min-height: 250px;
+  }
+  &__content {
+    padding: 20px;
+  }
+
+  &__title {
+    margin-top: 34px;
+    color: white;
+    font-size: 36px;
+  }
+  &__info {
+    color: rgba($color: #ffffff, $alpha: 0.9);
+    margin: 0;
+    font-size: 18px;
+  }
+}
+.applicants-list {
+  &__table {
+    margin: 36px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  &__column {
+    width: 100%;
+    &.number {
+      max-width: 40px;
+      text-align: center;
+    }
+  }
+  &__cell {
+    color: #333;
+    &:not(.number) {
+      padding-left: 12px;
+    }
+    &.number {
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+  &__row {
+    border-bottom: 1px solid #ccc;
+    &.header {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    &:not(.header):last-child {
+      border-bottom: none;
+    }
+  }
+}

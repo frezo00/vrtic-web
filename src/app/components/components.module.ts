@@ -21,6 +21,7 @@ import { ClickOutsideDirective } from '../directives/click-outside.directive';
 import { LoadingComponent } from './loading/loading.component';
 import { SuccessConfirmComponent } from './success-confirm/success-confirm.component';
 import { ModalComponent } from './modal/modal.component';
+import { ApplicantsListComponent } from './applicants-list/applicants-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ModalComponent } from './modal/modal.component';
     LoadingComponent,
     ClickOutsideDirective,
     SuccessConfirmComponent,
-    ModalComponent
+    ModalComponent,
+    ApplicantsListComponent
   ],
   imports: [
     CommonModule,
