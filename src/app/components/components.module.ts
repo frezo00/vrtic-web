@@ -22,6 +22,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { SuccessConfirmComponent } from './success-confirm/success-confirm.component';
 import { ModalComponent } from './modal/modal.component';
 import { ApplicantsListComponent } from './applicants-list/applicants-list.component';
+import { AgePipe } from '../pipes/age.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ApplicantsListComponent } from './applicants-list/applicants-list.compo
     ClickOutsideDirective,
     SuccessConfirmComponent,
     ModalComponent,
-    ApplicantsListComponent
+    ApplicantsListComponent,
+    AgePipe
   ],
   imports: [
     CommonModule,

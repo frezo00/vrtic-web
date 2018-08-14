@@ -9,6 +9,9 @@
     @include xsmall {
       min-height: 640px;
     }
+    @include small {
+      min-height: 640px;
+    }
   }
   &__content {
     padding: 16px;

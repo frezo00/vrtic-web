@@ -52,7 +52,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     public route: Router,
     public applicantService: ApplicantService
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 599px)');
+    this.mobileQuery = media.matchMedia('(max-width: 768px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
@@ -118,7 +118,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
       }
       const applicantData = {
         ...this.applyForm.value,
-        dateCreated: new Date()
+        dateCreated: new Date().toISOString()
       } as Applicant;
       console.log('new Date', newDate);
       console.log('form value: ', this.applyForm.value);
@@ -129,13 +129,13 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
 
   updateMobileDateFormat(mobileDate: string): void {
     this.applyForm.patchValue({
-      birthdate: new Date(mobileDate)
+      birthdate: new Date(mobileDate).toISOString()
     });
   }
 
   updateDesktopDateFormat(desktopDate: any): void {
     this.applyForm.patchValue({
-      birthdate: new Date(desktopDate)
+      birthdate: new Date(desktopDate).toISOString()
     });
   }
 

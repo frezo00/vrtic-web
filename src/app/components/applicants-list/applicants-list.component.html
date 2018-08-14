@@ -1,6 +1,6 @@
 <div class="applicants-list__container">
   <div class="applicants-list__header" fxLayoutAlign="center center">
-    <div class="applicants-list__header__content" fxFlex="100%" fxFlex.md="80%" fxFlex.gt-md="60%" fxLayout="column" fxLayoutGap="24px">
+    <div class="applicants-list__header__content" fxFlex="100%" fxFlex.sm="80%" fxFlex.gt-sm="60%" fxLayout="column" fxLayoutGap="24px">
       <h2 class="applicants-list__header__title">Glazbeni Vrtić</h2>
       <p class="applicants-list__header__info">Prijave za 2018. / 2019. godinu</p>
     </div>
@@ -17,34 +17,39 @@
         <div class="applicants-list__column">
           <p class="applicants-list__cell">Godine</p>
         </div>
-        <div class="applicants-list__column" fxHide.lt-md>
+        <div class="applicants-list__column" fxHide.lt-sm>
           <p class="applicants-list__cell">Datum rođenja</p>
         </div>
-        <div class="applicants-list__column" fxHide.lt-md>
+        <div class="applicants-list__column" fxHide.lt-sm>
           <p class="applicants-list__cell">Imena roditelja</p>
         </div>
-        <div class="applicants-list__column" fxHide.lt-md>
+        <div class="applicants-list__column" fxHide.lt-sm>
           <p class="applicants-list__cell">Kontakt broj</p>
         </div>
       </div>
-      <div *ngFor="let applicant of applicants; let i=index" class="applicants-list__row" fxFlex="100%" fxLayoutAlign="space-around center">
-        <div class="applicants-list__column number">
-          <p class="applicants-list__cell number">#{{ applicants.length - i }}</p>
+      <div *ngFor="let applicant of applicants; let i=index" (click)="showInfo(i)" class="applicants-list__item" fxLayout="column">
+        <div class="applicants-list__row" fxFlex="100%" fxLayoutAlign="space-around center">
+          <div class="applicants-list__column number">
+            <p class="applicants-list__cell number">#{{ applicants.length - i }}</p>
+          </div>
+          <div class="applicants-list__column">
+            <p class="applicants-list__cell name">{{ applicant.firstName + ' ' + applicant.lastName }}</p>
+          </div>
+          <div class="applicants-list__column">
+            <p class="applicants-list__cell years">{{ applicant.birthdate | age }}</p>
+          </div>
+          <div class="applicants-list__column" fxHide.lt-sm>
+            <p class="applicants-list__cell birthdate">{{ applicant.birthdate | date:'dd.MM.yyyy' }}</p>
+          </div>
+          <div class="applicants-list__column" fxHide.lt-sm>
+            <p class="applicants-list__cell parents">{{ applicant.parentsNames }}</p>
+          </div>
+          <div class="applicants-list__column" fxHide.lt-sm>
+            <p class="applicants-list__cell contact">{{ applicant.phoneNumber }}</p>
+          </div>
         </div>
-        <div class="applicants-list__column">
-          <p class="applicants-list__cell name">{{ applicant.firstName + ' ' + applicant.lastName }}</p>
-        </div>
-        <div class="applicants-list__column">
-          <p class="applicants-list__cell years">{{ applicant.birthdate?.toDate() | date:'dd.MM.yyyy' }}</p>
-        </div>
-        <div class="applicants-list__column" fxHide.lt-md>
-          <p class="applicants-list__cell birthdate">{{ applicant.birthdate.toDate() | date:'dd.MM.yyyy' }}</p>
-        </div>
-        <div class="applicants-list__column" fxHide.lt-md>
-          <p class="applicants-list__cell parents">{{ applicant.parentsNames }}</p>
-        </div>
-        <div class="applicants-list__column" fxHide.lt-md>
-          <p class="applicants-list__cell contact">{{ applicant.phoneNumber }}</p>
+        <div [ngClass]="{'active': activeDetails === i }" class="applicants-list__details">
+          <pre>{{ applicants[i] | json}}</pre>
         </div>
       </div>
     </div>

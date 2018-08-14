@@ -9,6 +9,7 @@ import { Applicant } from '../../models/applicant.model';
 })
 export class ApplicantsListComponent implements OnInit {
   applicants: Applicant[];
+  activeDetails = -1;
 
   constructor(private applicantService: ApplicantService) {}
 
@@ -16,17 +17,19 @@ export class ApplicantsListComponent implements OnInit {
     this.applicantService.getApplicants().subscribe(
       (applicants: Applicant[]) => {
         console.log('data: ', applicants);
-        const date = applicants[0].birthdate.toDate() as Date;
-        console.log('toDateString:', date.toDateString());
-        console.log('toISOString:', date.toISOString());
-        console.log('toLocaleDateString:', date.toLocaleDateString());
-        console.log('toLocaleString:', date.toLocaleString());
-        console.log('toLocaleTimeString:', date.toLocaleTimeString());
-        console.log('toTimeString:', date.toTimeString());
-        console.log('toString:', date.toString());
+        console.log('date: ', new Date(applicants[0].birthdate));
         this.applicants = applicants;
       },
       error => console.log(error)
     );
+  }
+
+  showInfo(index: number) {
+    if (index === this.activeDetails) {
+      this.activeDetails = -1;
+    } else {
+      this.activeDetails = index;
+    }
+    console.log(this.activeDetails);
   }
 }
