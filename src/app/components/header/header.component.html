@@ -1,0 +1,57 @@
+<div class="header__container" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="space-between center" fxFlexFill>
+  <div [ngClass]="{'show': !!openMenu}" class="mobile-nav-backdrop" (click)="openMenu = !openMenu"></div>
+  <a [routerLink]="[ '/' ]" class="header__logo-container" fxLayoutAlign="start center">
+    <img class="header__logo-img" src="../../../assets/images/logo/logo_text_white.png" alt="Logo">
+  </a>
+  <nav class="header__navigation__container">
+    <ul class="header__navigation__box" fxHide.lt-md fxLayoutAlign="space-around center">
+      <li class="header__navigation__item">
+        <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__navigation__link">Početna</a>
+      </li>
+      <li class="header__navigation__item">
+        <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__navigation__link">Prijave</a>
+      </li>
+      <li class="header__navigation__item">
+        <a class="header__navigation__link">Novosti</a>
+      </li>
+      <li class="header__navigation__item">
+        <a class="header__navigation__link">O nama</a>
+      </li>
+      <li class="header__navigation__item">
+        <a class="header__navigation__link">Kontakt</a>
+      </li>
+    </ul>
+    <div class="header__side-navigation">
+      <div class="header__mobile-navigation__container" [ngClass]="{'opened': openMenu}" fxLayout="column" fxLayoutAlign="space-between start">
+        <ul class="header__mobile-navigation__box" fxLayout="column" fxLayoutAlign="space-around start" (click)="openMenu = !openMenu">
+          <li class="header__mobile-navigation__item">
+            <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__mobile-navigation__link">Početna</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">Prijave</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a class="header__mobile-navigation__link">Novosti</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a class="header__mobile-navigation__link">O nama</a>
+          </li>
+          <li class="header__mobile-navigation__item">
+            <a class="header__mobile-navigation__link">Kontakt</a>
+          </li>
+        </ul>
+        <a [routerLink]="['/']" class="header__mobile-navigation__bottom-logo" (click)="openMenu = !openMenu">
+          <img class="header__mobile-navigation__bottom-logo-img" src="../../../assets/images/logo/logo_text_white.png" alt="Logo">
+        </a>
+      </div>
+      <div class="header__icon" fxHide.gt-sm>
+        <button type="button" class="header__icon-button" [ngClass]="{'open-menu': openMenu}" (click)="openMenu = !openMenu" fxLayout="column"
+          fxLayoutAlign="center center" fxLayoutGap="5px">
+          <span class="header__icon-bar"></span>
+          <span class="header__icon-bar"></span>
+          <span class="header__icon-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,142 @@
+@import '~src/_variables.scss';
+
+.form {
+  &__content {
+    padding: 12px;
+
+    & > form {
+      margin: 24px 0;
+    }
+  }
+
+  &__field {
+    position: relative;
+  }
+
+  &__label {
+    position: relative;
+    margin: 8px 0;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.7);
+    padding-left: 20px;
+
+    & > span {
+      padding-left: 8px;
+    }
+  }
+
+  &__input {
+    position: relative;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    border-radius: 24px;
+    border: 1px solid #ccc;
+    padding: 8px 20px;
+    color: #333;
+    transition: border-color 0.3s;
+
+    &.hide {
+      display: none;
+    }
+    &:focus {
+      outline: none;
+      border-color: #56abe6;
+    }
+    &.ng-touched.ng-invalid {
+      border-color: #e54352;
+    }
+    &.ng-touched.ng-dirty.ng-valid {
+      border-color: #1db954;
+    }
+    &:required ~ .form__label::before {
+      content: '*';
+      position: absolute;
+      top: -2px;
+      left: 8px;
+      color: #e54352;
+      font-size: 18px;
+    }
+  }
+
+  &__textarea {
+    resize: none;
+    box-sizing: border-box;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+  }
+
+  &__error-msg {
+    font-size: 0.8em;
+    height: 15px;
+    padding-left: 20px;
+    color: #e54352;
+    margin-top: 4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.form__header {
+  min-height: 340px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    #56abe6 0,
+    #5cb8f6 25%,
+    #63bdfb 50%,
+    #66c0fc 75%,
+    #64befa 100%
+  );
+
+  @include xsmall {
+    min-height: 250px;
+  }
+  &__content {
+    padding: 20px;
+  }
+
+  &__title {
+    margin-top: 34px;
+    color: white;
+    font-size: 36px;
+  }
+  &__info {
+    color: rgba($color: #ffffff, $alpha: 0.9);
+    margin: 0;
+    font-size: 18px;
+  }
+}
+.form__date {
+  &-container {
+    position: relative;
+  }
+  &-input {
+    padding-right: 48px;
+  }
+  &-icon {
+    cursor: pointer;
+    position: absolute;
+    color: #333;
+    right: 0;
+    top: 34px;
+    padding: 13px 20px 13px 0;
+    border-radius: 24px;
+    width: calc(100% - 20px);
+    text-align: right;
+  }
+  &-mobile {
+    background-color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: calc(100% - 42px);
+  }
+}
+:host {
+  display: flex;
+  flex-direction: column;
+}

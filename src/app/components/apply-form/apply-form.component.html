@@ -1,0 +1,90 @@
+<div class="form__container">
+  <div class="form__header" fxLayoutAlign="center center">
+    <div class="form__header__content" fxFlex="100%" fxFlex.gt-sm="80%" fxLayout="column" fxLayoutGap="24px">
+      <h2 class="form__header__title">Glazbeni Vrtić</h2>
+      <p class="form__header__info">Prijave za 2018. / 2019. godinu</p>
+    </div>
+  </div>
+  <div class="form__content" fxLayoutAlign="center center">
+    <form [ngStyle]="{'display': !success ? 'flex' : 'none'}" [formGroup]="applyForm" (ngSubmit)="onSubmit()" fxLayout="column"
+      fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutGap="12px">
+      <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+          <span [ngClass]="{'active': (firstName.touched && firstName.invalid)}" class="form__error-msg">
+            {{firstName.hasError('required') ? 'Ovo polje je obavezno' : firstName.hasError('maxlength') ? 'Tekst je predug' :''}}
+          </span>
+          <input class="form__input" type="text" formControlName="firstName" required>
+          <p class="form__label">Ime</p>
+        </div>
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+          <span [ngClass]="{'active': (lastName.touched && lastName.invalid)}" class="form__error-msg">
+            {{lastName.hasError('required') ? 'Ovo polje je obavezno' : lastName.hasError('maxlength') ? 'Tekst je predug' :''}}
+          </span>
+          <input class="form__input" type="text" formControlName="lastName" required>
+          <p class="form__label">Prezime</p>
+        </div>
+      </div>
+      <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+          <span [ngClass]="{'active': (birthdate.touched && birthdate.invalid)}" class="form__error-msg">
+            {{birthdate.hasError('required') ? 'Ovo polje je obavezno' : birthdate.hasError('maxlength') ? 'Neispravan format datuma'
+            :''}}
+          </span>
+          <input *ngIf="!!mobileQuery.matches" class="form__input form__date-mobile" type="date" formControlName="birthdate" [min]="minDate|date:'yyyy-MM-dd'"
+            [max]="maxDate|date:'yyyy-MM-dd'" required>
+          <input [ngClass]="{'hide': !!mobileQuery.matches}" class="form__input form__date-input" ngx-mydatepicker formControlName="birthdate"
+            [options]="myOptions" #dp="ngx-mydatepicker" required readonly [defaultMonth]="defaultMonth">
+          <span *ngIf="!mobileQuery.matches" class="form__date-icon" (click)="dp.toggleCalendar()">
+            <fa-icon [icon]="dateIcon"></fa-icon>
+          </span>
+          <p class="form__label">Datum rođenja</p>
+        </div>
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+          <span [ngClass]="{'active': (parentsNames.touched && parentsNames.invalid)}" class="form__error-msg">
+            {{parentsNames.hasError('required') ? 'Ovo polje je obavezno' : parentsNames.hasError('maxlength') ? 'Tekst je predug' :''}}
+          </span>
+          <input class="form__input" type="text" formControlName="parentsNames" required>
+          <p class="form__label">Ime oba roditelja</p>
+        </div>
+      </div>
+      <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+          <span [ngClass]="{'active': (phoneNumber.touched && phoneNumber.invalid)}" class="form__error-msg">
+            {{phoneNumber.hasError('required') ? 'Ovo polje je obavezno' : 'Neispravan format telefonskog broja'}}
+          </span>
+          <input class="form__input" type="tel" formControlName="phoneNumber" required>
+          <p class="form__label">Telefon / Mobitel</p>
+        </div>
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+          <span [ngClass]="{'active': (email.touched && email.invalid)}" class="form__error-msg">Neispravan email format</span>
+          <input class="form__input" type="email" formControlName="email">
+          <p class="form__label">Email
+            <span>(nije obavezno)</span>
+          </p>
+        </div>
+      </div>
+      <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+          <span [ngClass]="{'active': (message.touched && message.invalid)}" class="form__error-msg">
+            {{message.hasError('maxlength') ? 'Tekst je predug' : ''}}
+          </span>
+          <textarea class="form__input form__textarea" formControlName="message" rows="4"></textarea>
+          <p class="form__label">Napomena
+            <span>(nije obavezno)</span>
+          </p>
+        </div>
+        <div class="form__field" fxLayoutAlign="center center" fxFlex="100%" fxFlex.gt-xs="50%">
+          <re-captcha formControlName="recaptcha" siteKey="6LdOJmgUAAAAALV3oB-vD65j0WcoH4_wkhaww7vp"></re-captcha>
+        </div>
+      </div>
+
+      <div class="form__action" fxFlex="100%" fxLayoutAlign="center center">
+        <button type="submit" class="action-button" [disabled]="applyForm.invalid">Pošalji</button>
+      </div>
+    </form>
+    <app-success-confirm *ngIf="!!success" (resetForm)="resetForm()"></app-success-confirm>
+  </div>
+</div>
+
+<app-loading *ngIf="!!loading" fxLayout="column" fxLayoutAlign="center center"></app-loading>
+<app-modal *ngIf="!!openModal" (cancel)="openModal = false" (confirm)="route.navigateByUrl(targetUrl)"></app-modal>

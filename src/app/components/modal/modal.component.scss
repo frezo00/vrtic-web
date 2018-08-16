@@ -1,0 +1,72 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: rgba($color: #333, $alpha: 0.7);
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  &__container {
+    background-color: white;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  &__header {
+    background-color: #e54352;
+  }
+  &__title {
+    color: white;
+    margin: 0;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  &__cancel-icon {
+    color: white;
+    padding: 20px 24px;
+    cursor: pointer;
+  }
+  &__content {
+    padding: 24px 20px;
+    border-top: 1px solid #ccc;
+  }
+  &__message {
+    color: #333;
+    & > p {
+      margin: 0;
+      margin-top: 8px;
+    }
+  }
+  &__action-button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    width: 100%;
+    padding: 16px;
+    color: rgba($color: #333333, $alpha: 0.9);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+
+    &:focus {
+      outline: none;
+    }
+    &:first-child:hover {
+      background-color: rgba($color: #333333, $alpha: 0.05);
+    }
+    &:last-child {
+      color: #e54352;
+      &:hover {
+        background-color: rgba($color: #e54352, $alpha: 0.1);
+      }
+    }
+  }
+}
