@@ -47,16 +47,18 @@
   }
   &__item {
     border-bottom: 1px solid #ccc;
-    transition: background-color 0.3s;
     &:last-child {
       border-bottom: none;
     }
-    &:hover {
+  }
+  &__row {
+    &:not(.header) {
+      transition: background-color 0.3s;
+    }
+    &:not(.header):hover {
       cursor: pointer;
       background-color: rgba($color: #333333, $alpha: 0.1);
     }
-  }
-  &__row {
     &.header {
       font-weight: 600;
       font-size: 14px;
@@ -79,13 +81,52 @@
   }
 }
 .applicants-list__details {
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s;
-  &.active {
-    height: 200px;
-    opacity: 1;
-    visibility: visible;
+  &__container {
+    // height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: all 0.3s;
+    &.active {
+      padding: 20px; // height: 340px;
+      overflow: visible;
+      opacity: 1;
+      visibility: visible;
+      border-top: 1px solid #eee;
+      @include xsmall {
+        padding: 16px 0;
+      }
+    }
+    &:not(.active) {
+      height: 0;
+    }
+  }
+  /* &__row {
+    border-top: 1px solid #eee;
+  } */
+  &__box {
+    padding: 0px 8px 0 20px;
+    margin: 8px 0px;
+    width: 100%;
+    color: #333;
+    & > p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba($color: #333333, $alpha: 0.7);
+    }
+    & > h4 {
+      margin: 8px 0;
+      min-height: 18px;
+      // font-size: 15px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      &.no-data {
+        font-size: 14px;
+        font-style: italic;
+        color: rgba($color: #333333, $alpha: 0.5);
+        font-weight: 500;
+      }
+    }
   }
 }

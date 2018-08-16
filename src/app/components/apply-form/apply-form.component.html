@@ -1,13 +1,13 @@
 <div class="form__container">
   <div class="form__header" fxLayoutAlign="center center">
-    <div class="form__header__content" fxFlex="100%" fxFlex.md="80%" fxFlex.gt-md="60%" fxLayout="column" fxLayoutGap="24px">
+    <div class="form__header__content" fxFlex="100%" fxFlex.gt-sm="80%" fxLayout="column" fxLayoutGap="24px">
       <h2 class="form__header__title">Glazbeni Vrtić</h2>
       <p class="form__header__info">Prijave za 2018. / 2019. godinu</p>
     </div>
   </div>
   <div class="form__content" fxLayoutAlign="center center">
     <form [ngStyle]="{'display': !success ? 'flex' : 'none'}" [formGroup]="applyForm" (ngSubmit)="onSubmit()" fxLayout="column"
-      fxFlex="100%" fxFlex.md="80%" fxFlex.gt-md="60%" fxLayoutGap="12px">
+      fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutGap="12px">
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
         <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
           <span [ngClass]="{'active': (firstName.touched && firstName.invalid)}" class="form__error-msg">

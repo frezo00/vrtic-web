@@ -1,6 +1,6 @@
-<div class="header__container" fxFlex="100%" fxFlex.md="90%" fxFlex.gt-md="80%" fxLayoutAlign="space-between center" fxFlexFill>
+<div class="header__container" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="space-between center" fxFlexFill>
   <div [ngClass]="{'show': !!openMenu}" class="mobile-nav-backdrop" (click)="openMenu = !openMenu"></div>
-  <a [routerLink]="[ '/' ]" class="header__logo-container">
+  <a [routerLink]="[ '/' ]" class="header__logo-container" fxLayoutAlign="start center">
     <img class="header__logo-img" src="../../../assets/images/logo/logo_text_white.png" alt="Logo">
   </a>
   <nav class="header__navigation__container">

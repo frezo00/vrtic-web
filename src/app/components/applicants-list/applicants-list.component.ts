@@ -10,26 +10,30 @@ import { Applicant } from '../../models/applicant.model';
 export class ApplicantsListComponent implements OnInit {
   applicants: Applicant[];
   activeDetails = -1;
+  loading = false;
 
   constructor(private applicantService: ApplicantService) {}
 
   ngOnInit() {
+    this.loadApplicants();
+  }
+
+  loadApplicants(): void {
+    this.loading = true;
     this.applicantService.getApplicants().subscribe(
       (applicants: Applicant[]) => {
-        console.log('data: ', applicants);
-        console.log('date: ', new Date(applicants[0].birthdate));
         this.applicants = applicants;
+        this.loading = false;
       },
       error => console.log(error)
     );
   }
 
-  showInfo(index: number) {
+  showInfo(index: number): void {
     if (index === this.activeDetails) {
       this.activeDetails = -1;
     } else {
       this.activeDetails = index;
     }
-    console.log(this.activeDetails);
   }
 }
