@@ -11,6 +11,7 @@ export class ApplicantsListComponent implements OnInit {
   applicants: Applicant[];
   activeDetails = -1;
   loading = false;
+  activeTab = 1;
 
   constructor(private applicantService: ApplicantService) {}
 
@@ -27,6 +28,12 @@ export class ApplicantsListComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  setActiveTab(tabNumber: number): void {
+    if (this.activeTab !== tabNumber) {
+      this.activeTab = tabNumber;
+    }
   }
 
   showInfo(index: number): void {

@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="form__wrapper" fxLayout.lt-sm="column" fxLayoutGap="12px">
-        <div class="form__field" fxLayout="column-reverse" fxFlex="100%" fxFlex.gt-xs="50%">
+        <div class="form__field" fxLayout="column-reverse" fxFlex="100%">
           <span [ngClass]="{'active': (message.touched && message.invalid)}" class="form__error-msg">
             {{message.hasError('maxlength') ? 'Tekst je predug' : ''}}
           </span>
@@ -73,13 +73,14 @@
             <span>(nije obavezno)</span>
           </p>
         </div>
-        <div class="form__field" fxLayoutAlign="center center" fxFlex="100%" fxFlex.gt-xs="50%">
-          <re-captcha formControlName="recaptcha" siteKey="6LdOJmgUAAAAALV3oB-vD65j0WcoH4_wkhaww7vp"></re-captcha>
+        <div style="display: none;" class="form__field">
+          <re-captcha #captchaRef="reCaptcha" size="invisible" formControlName="recaptcha" siteKey="6LcjcmoUAAAAALOQ4hCEJiq9ElNiqU2xv1YMk0tf"
+            (resolved)="$event && onSubmit()"></re-captcha>
         </div>
       </div>
 
       <div class="form__action" fxFlex="100%" fxLayoutAlign="center center">
-        <button type="submit" class="action-button" [disabled]="applyForm.invalid">Pošalji</button>
+        <button type="button" class="action-button" [disabled]="applyForm.invalid" (click)="captchaRef.execute()">Pošalji</button>
       </div>
     </form>
     <app-success-confirm *ngIf="!!success" (resetForm)="resetForm()"></app-success-confirm>
