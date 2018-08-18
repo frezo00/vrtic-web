@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCalendarAlt, faUser } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-news',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
+  calendarIcon = faCalendarAlt;
+  userIcon = faUser;
 
   constructor() { }
 

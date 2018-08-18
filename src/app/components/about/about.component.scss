@@ -1,0 +1,38 @@
+.about {
+  &__container {
+    background: url('/assets/images/Glazbaonica-cover-cut.jpg') center center
+      no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 40px;
+  }
+  &__title {
+    margin-top: 20px;
+    &-text {
+      color: white;
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    &-underline {
+      height: 4px;
+      width: 80px;
+      background-color: #ee3b3b;
+      display: block;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+  }
+  &__content {
+    padding: 16px;
+  }
+  &__section {
+    &-title {
+      color: white;
+      font-size: 24px;
+    }
+    &-description {
+      color: rgba($color: #ffffff, $alpha: 0.8);
+      line-height: 1.4em;
+    }
+  }
+}

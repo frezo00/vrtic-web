@@ -9,16 +9,13 @@
         <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__navigation__link">Početna</a>
       </li>
       <li class="header__navigation__item">
-        <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__navigation__link">Prijave</a>
+        <a [routerLink]="[ '/upisi' ]" [routerLinkActive]="'active'" class="header__navigation__link">Upisi</a>
       </li>
       <li class="header__navigation__item">
         <a class="header__navigation__link">Novosti</a>
       </li>
       <li class="header__navigation__item">
         <a class="header__navigation__link">O nama</a>
-      </li>
-      <li class="header__navigation__item">
-        <a class="header__navigation__link">Kontakt</a>
       </li>
     </ul>
     <div class="header__side-navigation">
@@ -28,16 +25,13 @@
             <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__mobile-navigation__link">Početna</a>
           </li>
           <li class="header__mobile-navigation__item">
-            <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">Prijave</a>
+            <a [routerLink]="[ '/upisi' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">Upisi</a>
           </li>
           <li class="header__mobile-navigation__item">
             <a class="header__mobile-navigation__link">Novosti</a>
           </li>
           <li class="header__mobile-navigation__item">
             <a class="header__mobile-navigation__link">O nama</a>
-          </li>
-          <li class="header__mobile-navigation__item">
-            <a class="header__mobile-navigation__link">Kontakt</a>
           </li>
         </ul>
         <a [routerLink]="['/']" class="header__mobile-navigation__bottom-logo" (click)="openMenu = !openMenu">

@@ -10,7 +10,7 @@ import { ApplicantsListComponent } from './components/applicants-list/applicants
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   {
-    path: 'prijave',
+    path: 'upisi',
     component: ApplyFormComponent,
     canDeactivate: [PendingChangesGuard]
   },
