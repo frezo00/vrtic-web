@@ -6,7 +6,9 @@ import { ApplyFormComponent } from './components/apply-form/apply-form.component
 import { NewsComponent } from './components/news/news.component';
 import { NewsListComponent } from './components/news/news-list/news-list.component';
 import { NewsPostComponent } from './components/news/news-post/news-post.component';
+import { AboutComponent } from './components/about/about.component';
 import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
+
 import { PendingChangesGuard } from './guards/pending-changes.guard';
 import { ApplicantsListComponent } from './components/applicants-list/applicants-list.component';
 
@@ -25,6 +27,7 @@ const routes: Routes = [
       { path: ':id', component: NewsPostComponent }
     ]
   },
+  { path: 'about', component: AboutComponent },
   { path: 'vrtic', component: ApplicantsListComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

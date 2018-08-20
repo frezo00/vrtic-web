@@ -2,11 +2,16 @@
   <app-subheader [title]="'Glazbeni Vrtić'" [subtitle]="'Upisi za 2018. / 2019. godinu'"></app-subheader>
   <div class="form__wrapper" fxFlexFill fxLayoutAlign="center strech">
     <div class="form__content" fxLayout="column" fxLayoutAlign="start strech" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutGap="16px">
-      <div class="form__information-container" fxLayout="column">
+      <div [ngStyle]="{'display': !success ? 'flex' : 'none'}" class="form__information-container" fxLayout="column">
         <h3 class="form__information-title">Upis novih članova počinje UPRAVO SADA!</h3>
         <p class="form__information-text">
           Došlo je vrijeme za još jedno druženje u našem Glazbenom vrtiću. Broj mjesta je ograničen, stoga požurite i osigurajte mjesto
-          Vašem mališanu. Naše aktivnosti kreću početkom rujna 2018. godine.
+          Vašem mališanu. Prijave će biti otvorene <b>do početka rujna 2018. godine</b>.
+        </p>
+        <p class="form__information-text">
+          Detaljnije informacije možete dobiti na brojeve telefona: <br>
+          <a href="tel:+38763468055">063/468-055</a> i <a href="tel:+38763464617">063/464-617</a> <br> ili putem facebook
+          i instagram stranice: <b>Glazbeni vrtić Posušje</b>.
         </p>
         <span class="form__information-announce">Radujemo se novim glazbenim avanturama!</span>
       </div>

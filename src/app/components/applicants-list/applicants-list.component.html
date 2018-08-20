@@ -9,7 +9,7 @@
       <div class="applicants-list__tabs__item" [ngClass]="{'active': activeTab === 2}" (click)="setActiveTab(2)">Grupe</div>
     </div>
   </div>
-  <div class="applicants-list__content" fxLayoutAlign="center center" fxFlexFill>
+  <div *ngIf="activeTab === 1" class="applicants-list__content" fxLayoutAlign="center center" fxFlexFill>
     <div class="applicants-list__table" fxFlex="100%" fxFlex.gt-sm="80%" fxLayout="column">
       <div class="applicants-list__row header" fxFlex="100%" fxLayoutAlign="space-around center">
         <div class="applicants-list__column number">
@@ -107,7 +107,13 @@
           </div>
         </div>
       </div>
+      <div *ngIf="!applicants" class="applicants-list__empty-list">
+        <p>Nema podataka</p>
+      </div>
     </div>
+  </div>
+  <div *ngIf="activeTab === 2" class="groups" fxLayoutAlign="center center" fxFlexFill>
+    <h2 style="color: #333; padding-left: 16px;">Uskoro!</h2>
   </div>
 </div>
 <app-loading *ngIf="!!loading" fxLayout="column" fxLayoutAlign="center center"></app-loading>

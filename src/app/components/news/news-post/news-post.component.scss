@@ -8,14 +8,35 @@
     padding: 0 16px;
   }
   &__category {
-    font-size: 14px;
     text-transform: uppercase;
     color: #ee3b3b;
+    & > h3 {
+      font-size: 14px;
+    }
   }
   &__title > h2 {
     margin-top: 0;
+    margin-bottom: 8px;
     color: #333;
     line-height: 1.2em;
     font-size: 30px;
+  }
+  &__info {
+    padding: 16px 4px 24px;
+    color: #333;
+    font-size: 14px;
+    & fa-icon {
+      color: #91979b;
+    }
+  }
+  &__image {
+    & > img {
+      width: 100%;
+    }
+  }
+  &__text {
+    color: #333;
+    line-height: 1.4em;
+    margin: 16px 0;
   }
 }

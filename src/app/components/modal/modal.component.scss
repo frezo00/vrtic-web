@@ -20,7 +20,7 @@
     border-radius: 8px;
   }
   &__header {
-    background-color: #e54352;
+    background-color: #ee3b3b;
   }
   &__title {
     color: white;
@@ -63,9 +63,9 @@
       background-color: rgba($color: #333333, $alpha: 0.05);
     }
     &:last-child {
-      color: #e54352;
+      color: #ee3b3b;
       &:hover {
-        background-color: rgba($color: #e54352, $alpha: 0.1);
+        background-color: rgba($color: #ee3b3b, $alpha: 0.1);
       }
     }
   }

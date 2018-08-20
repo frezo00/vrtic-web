@@ -1,6 +1,11 @@
-.about {
-  &__wrapper {
+.about-home {
+  &__container {
+    /* background: url('/assets/images/Glazbaonica-cover-cut.jpg') center center
+      no-repeat;
+    background-size: cover;
+    background-attachment: fixed; */
     padding-bottom: 40px;
+    background-color: #cccccc;
   }
   &__title {
     margin-top: 20px;

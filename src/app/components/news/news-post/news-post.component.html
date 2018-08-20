@@ -1,28 +1,41 @@
-<div class="news-post__container" fxLayout="column" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="start stretch">
+<div *ngIf="!!newsPost" class="news-post__container" fxLayout="column" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="start stretch">
   <div class="news-post__category">
     <h3>{{ newsPost?.category }}</h3>
   </div>
   <div class="news-post__title">
     <h2>{{ newsPost?.title }}</h2>
   </div>
-  <div class="news-post__info">
-    <div class="news-post__date-posted">{{ newsPost?.datePosted | date:'dd.MM.yyyy' }}</div>
-    <div class="news-post__created-by">{{ newsPost?.createdBy }}</div>
+  <div class="news-post__info" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="36px">
+    <div class="news-post__date-posted" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <fa-icon [icon]="calendarIcon"></fa-icon>
+      <span>{{ newsPost?.datePosted | date:'dd.MM.yyyy' }}</span>
+    </div>
+    <div class="news-post__created-by" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <fa-icon [icon]="userIcon"></fa-icon>
+      <span>{{ newsPost?.createdBy }}</span>
+    </div>
   </div>
   <div class="news-post__image">
-    <img src="assets/images/Glazbaonica-cover.jpeg" alt="Post Image" height="500">
+    <img src="assets/images/Glazbaonica-cover.jpeg" alt="Post Image">
   </div>
   <div class="news-post__text">
     <p>
-      Došlo je vrijeme za još jedno druženje u našem Glazbenom vrtiću. Sva raspjevana djeca od 5 i 6 godina pozvana su da nam se
-      pridruže. Naš cilj je Vašoj djeci pomoći da zavole kvalitetnu glazbu i kroz igru razviju mnoge sposobnosti. Aktivnosti
-      s kojima će se susresti kroz naš program su pjevanje, izvođenje brojalica uz ritmičke i metričke pokrete, glazbene
+      Došlo je vrijeme za još jedno druženje u našem Glazbenom vrtiću. Sva raspjevana djeca <b>od 5 i 6 godina</b>
+      pozvana su da nam se pridruže. Naš cilj je Vašoj djeci pomoći da zavole kvalitetnu glazbu i kroz igru razviju mnoge sposobnosti.
+    </p>
+    <p>
+      Aktivnosti s kojima će se susresti kroz naš program su pjevanje, izvođenje brojalica uz ritmičke i metričke pokrete, glazbene
       igre, slušanje glazbe, likovni doživljaj, sviranje na dječjem instrumentariju, glazbene improvizacije, upoznavanje
       raznih glazbenih instrumenata, izrađivanje dječjih instrumenata te javni nastup na glazbenim priredbama. Radionice
-      se održavaju jednom tjedno u trajanju od 60 minuta. Prijave će biti otvorene do početka rujna 2018. godine. Detaljnije
-      informacije možete dobiti na brojeve telefona: 063/468-055 i 063/464-617 ili putem facebook i instagram stranice: Glazbeni
-      vrtić Posušje. Dajte svom djetetu priliku da doživi nezaboravne i uzbudljive trenutke. Radujemo se novim glazbenim
-      avanturama!
+      se održavaju <b>jednom tjedno u trajanju od 60 minuta</b>.
     </p>
+    <p>
+      Prijave će biti otvorene do početka rujna 2018. godine. Detaljnije informacije možete dobiti na brojeve telefona:
+      <a href="tel:+38763468055">063/468-055</a> i <a href="tel:+38763464617">063/464-617</a>
+      ili putem facebook i instagram stranice: <b>Glazbeni vrtić Posušje</b>.
+    </p>
+    <p>Dajte svom djetetu priliku da doživi nezaboravne i uzbudljive trenutke. Radujemo se novim glazbenim avanturama!</p>
   </div>
 </div>
+
+<app-loading *ngIf="!!loading" fxLayout="column" fxLayoutAlign="center center"></app-loading>

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DocumentSnapshot } from 'angularfire2/firestore';
+import { faCalendarAlt, faUser } from '@fortawesome/free-regular-svg-icons';
 
 import { NewsService } from '../news.service';
 import { NewsPost } from '../../../models/news-post.model';
@@ -12,8 +13,12 @@ import { NewsPost } from '../../../models/news-post.model';
   styleUrls: ['./news-post.component.scss']
 })
 export class NewsPostComponent implements OnInit, OnDestroy {
+  calendarIcon = faCalendarAlt;
+  userIcon = faUser;
+
   private newsSub: any;
   newsPost: NewsPost;
+  loading = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,11 +38,12 @@ export class NewsPostComponent implements OnInit, OnDestroy {
   }
 
   getNewsPost(id: string): void {
+    this.loading = true;
     this.newsService
       .getNewsPost(id)
       .then((newsPost: DocumentSnapshot<NewsPost>) => {
-        console.log('news data', newsPost.data());
         this.newsPost = newsPost.data();
+        this.loading = false;
       })
       .catch(error => console.log(error));
   }

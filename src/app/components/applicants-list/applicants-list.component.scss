@@ -61,6 +61,7 @@
   }
   &__row {
     &:not(.header) {
+      border-left: 4px solid #ee3b3b;
       transition: background-color 0.3s;
     }
     &:not(.header):hover {
@@ -165,4 +166,8 @@
       min-width: 80px;
     }
   }
+}
+.applicants-list__empty-list {
+  text-align: center;
+  color: rgba($color: #333333, $alpha: 0.5);
 }

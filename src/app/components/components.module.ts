@@ -28,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SubheaderComponent } from './subheader/subheader.component';
 import { NewsPostComponent } from './news/news-post/news-post.component';
 import { NewsListComponent } from './news/news-list/news-list.component';
+import { AboutHomeComponent } from './about/about-home/about-home.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NewsListComponent } from './news/news-list/news-list.component';
     FooterComponent,
     SubheaderComponent,
     NewsPostComponent,
-    NewsListComponent
+    NewsListComponent,
+    AboutHomeComponent
   ],
   imports: [
     CommonModule,
