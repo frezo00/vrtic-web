@@ -1,8 +1,13 @@
 @import '~src/_variables.scss';
 
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
 .form {
   &__content {
-    padding: 12px;
+    padding: 36px 16px;
 
     & > form {
       margin: 24px 0;
@@ -81,36 +86,6 @@
   }
 }
 
-.form__header {
-  min-height: 340px;
-  width: 100%;
-  background: linear-gradient(
-    to bottom,
-    #ee3b3b 0,
-    #f53e3e 25%,
-    #f74747 50%,
-    #fb4f4f 75%,
-    #ff5959 100%
-  );
-
-  @include xsmall {
-    min-height: 250px;
-  }
-  &__content {
-    padding: 20px;
-  }
-
-  &__title {
-    margin-top: 34px;
-    color: white;
-    font-size: 36px;
-  }
-  &__info {
-    color: rgba($color: #ffffff, $alpha: 0.9);
-    margin: 0;
-    font-size: 18px;
-  }
-}
 .form__date {
   &-container {
     position: relative;
@@ -136,7 +111,26 @@
     width: calc(100% - 42px);
   }
 }
-:host {
-  display: flex;
-  flex-direction: column;
+
+.form__information {
+  &-container {
+    background-color: #eee;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 36px;
+    @include xsmall {
+      padding: 24px;
+    }
+  }
+  &-title {
+    color: #333;
+    margin-top: 0;
+  }
+  &-text {
+    line-height: 1.4em;
+    color: #333;
+  }
+  &-announce {
+    color: #333;
+  }
 }

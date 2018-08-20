@@ -1,0 +1,33 @@
+@import '~src/_variables.scss';
+
+.subheader {
+  &__container {
+    min-height: 340px;
+    width: 100%;
+    background: linear-gradient(
+      to bottom,
+      #ee3b3b 0,
+      #f53e3e 25%,
+      #f74747 50%,
+      #fb4f4f 75%,
+      #ff5959 100%
+    );
+
+    @include xsmall {
+      min-height: 250px;
+    }
+  }
+  &__content {
+    padding: 20px;
+  }
+  &__title {
+    margin-top: 34px;
+    color: white;
+    font-size: 36px;
+  }
+  &__info {
+    color: rgba($color: #ffffff, $alpha: 0.9);
+    margin: 0;
+    font-size: 18px;
+  }
+}

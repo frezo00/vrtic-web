@@ -1,3 +1,10 @@
 <app-image-slides></app-image-slides>
-<app-news id="news"></app-news>
-<app-about id="about"></app-about>
+<div class="home__news-list__container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px">
+  <div class="home__news-list__title">
+    <h2 class="home__news-list__title-text">Novosti</h2>
+    <span class="home__news-list__title-underline"></span>
+  </div>
+  <app-news-list></app-news-list>
+</div>
+
+<app-about></app-about>

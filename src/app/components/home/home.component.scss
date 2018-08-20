@@ -1,0 +1,24 @@
+.home {
+  &__news-list {
+    &__container {
+      background-color: #fafafa;
+      padding-bottom: 40px;
+    }
+    &__title {
+      margin-top: 20px;
+      &-text {
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 16px;
+      }
+      &-underline {
+        height: 4px;
+        width: 80px;
+        background-color: #ee3b3b;
+        display: block;
+        margin: 0 auto;
+        border-radius: 2px;
+      }
+    }
+  }
+}

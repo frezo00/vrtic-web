@@ -1,23 +1,6 @@
-<div class="news__container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px">
-  <div class="news__title">
-    <h2 class="news__title-text">Novosti</h2>
-    <span class="news__title-underline"></span>
-  </div>
-  <div class="news__content" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="space-between center">
-    <div class="news__item" fxLayout="column" fxLayoutAlign="end strech">
-      <div class="news__item-image"></div>
-      <div class="news__item-category">Glazbeni Vrtić</div>
-      <div class="news__item-title">Početak upisa u Glazbeni Vrtić za 2018./2019. godinu</div>
-      <div class="news__item-info" fxLayoutAlign="start center" fxLayoutGap="36px">
-        <div class="news__item-date" fxLayoutAlign="center center" fxLayoutGap="8px">
-          <fa-icon [icon]="calendarIcon"></fa-icon>
-          <span>17.08.2018.</span>
-        </div>
-        <div class="news__item-author" fxLayoutAlign="center center" fxLayoutGap="8px">
-          <fa-icon [icon]="userIcon"></fa-icon>
-          <span>Marija</span>
-        </div>
-      </div>
-    </div>
+<div class="news__container">
+  <app-subheader [title]="'Novosti'" [subtitle]="'Najnovije glazbene vijesti'"></app-subheader>
+  <div class="news__content">
+    <router-outlet></router-outlet>
   </div>
 </div>

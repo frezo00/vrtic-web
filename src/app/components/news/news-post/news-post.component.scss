@@ -1,0 +1,21 @@
+:host {
+  justify-content: center;
+  align-items: center;
+}
+
+.news-post {
+  &__container {
+    padding: 0 16px;
+  }
+  &__category {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ee3b3b;
+  }
+  &__title > h2 {
+    margin-top: 0;
+    color: #333;
+    line-height: 1.2em;
+    font-size: 30px;
+  }
+}

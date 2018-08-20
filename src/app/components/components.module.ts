@@ -25,6 +25,9 @@ import { ApplicantsListComponent } from './applicants-list/applicants-list.compo
 import { AgePipe } from '../pipes/age.pipe';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
+import { SubheaderComponent } from './subheader/subheader.component';
+import { NewsPostComponent } from './news/news-post/news-post.component';
+import { NewsListComponent } from './news/news-list/news-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { FooterComponent } from './footer/footer.component';
     ApplicantsListComponent,
     AgePipe,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    SubheaderComponent,
+    NewsPostComponent,
+    NewsListComponent
   ],
   imports: [
     CommonModule,
