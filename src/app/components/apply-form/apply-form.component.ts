@@ -65,7 +65,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     this.myOptions = myDatePickerOptions;
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.openModal = true;
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
@@ -90,7 +90,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     ]);
     this.email = new FormControl('', validateEmail);
     this.message = new FormControl('', Validators.maxLength(500));
-    this.recaptcha = new FormControl(null, Validators.required);
+    this.recaptcha = new FormControl(null);
   }
 
   initForm(): void {
@@ -106,7 +106,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.applyForm.valid) {
       let newDate: Date;
       if (this.birthdate.value.jsdate) {
@@ -139,7 +139,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  saveApplicant(applicantData: Applicant) {
+  saveApplicant(applicantData: Applicant): void {
     this.loading = true;
     this.applicantService
       .addApplicant(applicantData)
@@ -149,7 +149,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
         this.recaptcha.reset();
         this.applyForm.reset();
       })
-      .catch(error => console.log('error occured'));
+      .catch(error => console.log('error occured', error));
   }
 
   resetForm(): void {

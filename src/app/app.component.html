@@ -1,4 +1,5 @@
-<div fxLayout="column-reverse" fxLayoutAlign="start start">
-  <router-outlet></router-outlet>
+<div style="height: 100%">
   <app-header [ngStyle]="{'background-color': bgColor()}"></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
 </div>

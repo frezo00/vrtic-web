@@ -1,29 +1,33 @@
 <div class="applicants-list__container">
   <div class="applicants-list__header" fxLayoutAlign="center center">
-    <div class="applicants-list__header__content" fxFlex="100%" fxFlex.gt-sm="80%" fxLayout="column" fxLayoutGap="24px">
+    <div class="applicants-list__header__content" fxFlex="100%" fxFlex.gt-sm="80%" fxLayout="column" fxLayoutGap="16px">
       <h2 class="applicants-list__header__title">Glazbeni Vrtić</h2>
       <p class="applicants-list__header__info">Prijave za 2018. / 2019. godinu</p>
     </div>
+    <div class="applicants-list__tabs" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="start center">
+      <div class="applicants-list__tabs__item" [ngClass]="{'active': activeTab === 1}" (click)="setActiveTab(1)">Upisi</div>
+      <div class="applicants-list__tabs__item" [ngClass]="{'active': activeTab === 2}" (click)="setActiveTab(2)">Grupe</div>
+    </div>
   </div>
-  <div class="applicants-list__content" fxLayoutAlign="center center">
+  <div *ngIf="activeTab === 1" class="applicants-list__content" fxLayoutAlign="center center" fxFlexFill>
     <div class="applicants-list__table" fxFlex="100%" fxFlex.gt-sm="80%" fxLayout="column">
       <div class="applicants-list__row header" fxFlex="100%" fxLayoutAlign="space-around center">
         <div class="applicants-list__column number">
           <p class="applicants-list__cell number">#</p>
         </div>
-        <div class="applicants-list__column">
+        <div class="applicants-list__column" fxFlex.xs="65%" fxFlex="100%">
           <p class="applicants-list__cell">Ime i Prezime</p>
         </div>
-        <div class="applicants-list__column">
+        <div class="applicants-list__column" fxFlex.xs="35%" fxFlex="100%">
           <p class="applicants-list__cell">Godine</p>
         </div>
-        <div class="applicants-list__column" fxHide.lt-sm>
+        <div class="applicants-list__column" fxHide.xs>
           <p class="applicants-list__cell">Datum rođenja</p>
         </div>
-        <div class="applicants-list__column" fxHide.lt-sm>
+        <div class="applicants-list__column" fxHide.xs>
           <p class="applicants-list__cell">Imena roditelja</p>
         </div>
-        <div class="applicants-list__column" fxHide.lt-sm>
+        <div class="applicants-list__column" fxHide.xs>
           <p class="applicants-list__cell">Kontakt broj</p>
         </div>
       </div>
@@ -32,19 +36,19 @@
           <div class="applicants-list__column number">
             <p class="applicants-list__cell number">#{{ applicants.length - i }}</p>
           </div>
-          <div class="applicants-list__column">
+          <div class="applicants-list__column" fxFlex.xs="65%" fxFlex="100%">
             <p class="applicants-list__cell name">{{ applicant.firstName + ' ' + applicant.lastName }}</p>
           </div>
-          <div class="applicants-list__column">
+          <div class="applicants-list__column" fxFlex.xs="35%" fxFlex="100%">
             <p class="applicants-list__cell years">{{ applicant.birthdate | age }}</p>
           </div>
-          <div class="applicants-list__column" fxHide.lt-sm>
+          <div class="applicants-list__column" fxHide.xs>
             <p class="applicants-list__cell birthdate">{{ applicant.birthdate | date:'dd.MM.yyyy' }}</p>
           </div>
-          <div class="applicants-list__column" fxHide.lt-sm>
+          <div class="applicants-list__column" fxHide.xs>
             <p class="applicants-list__cell parents">{{ applicant.parentsNames }}</p>
           </div>
-          <div class="applicants-list__column" fxHide.lt-sm>
+          <div class="applicants-list__column" fxHide.xs>
             <p class="applicants-list__cell contact">{{ applicant.phoneNumber }}</p>
           </div>
         </div>
@@ -103,7 +107,13 @@
           </div>
         </div>
       </div>
+      <div *ngIf="!applicants" class="applicants-list__empty-list">
+        <p>Nema podataka</p>
+      </div>
     </div>
+  </div>
+  <div *ngIf="activeTab === 2" class="groups" fxLayoutAlign="center center" fxFlexFill>
+    <h2 style="color: #333; padding-left: 16px;">Uskoro!</h2>
   </div>
 </div>
 <app-loading *ngIf="!!loading" fxLayout="column" fxLayoutAlign="center center"></app-loading>

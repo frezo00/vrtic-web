@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 
 import { PendingChangesGuard } from './guards/pending-changes.guard';
 import { ApplicantService } from './components/apply-form/applicant.service';
+import { NewsService } from './components/news/news.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,7 @@ import { ApplicantService } from './components/apply-form/applicant.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [ApplicantService, PendingChangesGuard],
+  providers: [ApplicantService, NewsService, PendingChangesGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

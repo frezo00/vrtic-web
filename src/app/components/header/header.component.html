@@ -1,7 +1,7 @@
 <div class="header__container" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="space-between center" fxFlexFill>
   <div [ngClass]="{'show': !!openMenu}" class="mobile-nav-backdrop" (click)="openMenu = !openMenu"></div>
   <a [routerLink]="[ '/' ]" class="header__logo-container" fxLayoutAlign="start center">
-    <img class="header__logo-img" src="../../../assets/images/logo/logo_text_white.png" alt="Logo">
+    <img class="header__logo-img" src="../../../assets/images/logo/white_6.png" alt="Logo">
   </a>
   <nav class="header__navigation__container">
     <ul class="header__navigation__box" fxHide.lt-md fxLayoutAlign="space-around center">
@@ -9,16 +9,13 @@
         <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__navigation__link">Početna</a>
       </li>
       <li class="header__navigation__item">
-        <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__navigation__link">Prijave</a>
+        <a [routerLink]="[ '/upisi' ]" [routerLinkActive]="'active'" class="header__navigation__link">Upisi</a>
       </li>
       <li class="header__navigation__item">
-        <a class="header__navigation__link">Novosti</a>
+        <a [routerLink]="[ '/novosti' ]" [routerLinkActive]="'active'" class="header__navigation__link">Novosti</a>
       </li>
       <li class="header__navigation__item">
-        <a class="header__navigation__link">O nama</a>
-      </li>
-      <li class="header__navigation__item">
-        <a class="header__navigation__link">Kontakt</a>
+        <a [routerLink]="[ '/about' ]" [routerLinkActive]="'active'" class="header__navigation__link">O nama</a>
       </li>
     </ul>
     <div class="header__side-navigation">
@@ -28,16 +25,13 @@
             <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__mobile-navigation__link">Početna</a>
           </li>
           <li class="header__mobile-navigation__item">
-            <a [routerLink]="[ '/prijave' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">Prijave</a>
+            <a [routerLink]="[ '/upisi' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">Upisi</a>
           </li>
           <li class="header__mobile-navigation__item">
-            <a class="header__mobile-navigation__link">Novosti</a>
+            <a [routerLink]="[ '/novosti' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">Novosti</a>
           </li>
           <li class="header__mobile-navigation__item">
-            <a class="header__mobile-navigation__link">O nama</a>
-          </li>
-          <li class="header__mobile-navigation__item">
-            <a class="header__mobile-navigation__link">Kontakt</a>
+            <a [routerLink]="[ '/about' ]" [routerLinkActive]="'active'" class="header__mobile-navigation__link">O nama</a>
           </li>
         </ul>
         <a [routerLink]="['/']" class="header__mobile-navigation__bottom-logo" (click)="openMenu = !openMenu">

@@ -23,6 +23,12 @@ import { SuccessConfirmComponent } from './success-confirm/success-confirm.compo
 import { ModalComponent } from './modal/modal.component';
 import { ApplicantsListComponent } from './applicants-list/applicants-list.component';
 import { AgePipe } from '../pipes/age.pipe';
+import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';
+import { SubheaderComponent } from './subheader/subheader.component';
+import { NewsPostComponent } from './news/news-post/news-post.component';
+import { NewsListComponent } from './news/news-list/news-list.component';
+import { AboutHomeComponent } from './about/about-home/about-home.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,13 @@ import { AgePipe } from '../pipes/age.pipe';
     SuccessConfirmComponent,
     ModalComponent,
     ApplicantsListComponent,
-    AgePipe
+    AgePipe,
+    AboutComponent,
+    FooterComponent,
+    SubheaderComponent,
+    NewsPostComponent,
+    NewsListComponent,
+    AboutHomeComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +62,7 @@ import { AgePipe } from '../pipes/age.pipe';
     NgxMyDatePickerModule.forRoot(),
     FontAwesomeModule
   ],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, FooterComponent],
   providers: []
 })
 export class ComponentsModule {}

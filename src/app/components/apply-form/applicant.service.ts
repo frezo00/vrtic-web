@@ -20,7 +20,7 @@ export class ApplicantService {
     return this.applicantsCollection.add(applicantData);
   }
 
-  getApplicants() {
+  getApplicants(): Observable<Applicant[]> {
     return this.afDB
       .collection<Applicant>('applicants', ref =>
         ref.orderBy('dateCreated', 'desc')

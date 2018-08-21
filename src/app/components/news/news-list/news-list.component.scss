@@ -1,0 +1,72 @@
+@import '~src/_variables.scss';
+
+:host {
+  justify-content: center;
+  align-items: center;
+}
+
+.news-list {
+  &__content {
+    margin-bottom: 36px;
+    padding: 16px 24px 30px;
+    overflow-x: auto;
+    @include xsmall {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+  &__item {
+    border-radius: 4px;
+    max-width: 460px !important;
+    background-color: white;
+    text-decoration: none;
+    overflow: hidden;
+    /* box-shadow: 0 7px 8px -4px rgba($color: #333333, $alpha: 0.2),
+      0 12px 17px 2px rgba($color: #333333, $alpha: 0.14),
+      0 5px 22px 4px rgba($color: #333333, $alpha: 0.12); */
+    transition: all 0.3s ease-out;
+    box-shadow: 0px 2px 8px rgba($color: #333333, $alpha: 0.2);
+    &:hover {
+      box-shadow: 0 14px 32px 0 rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
+    &-image {
+      min-height: 240px;
+      background: url('/assets/images/Glazbaonica-cover.jpeg') center center
+        no-repeat;
+      background-size: cover;
+    }
+    &-category {
+      margin-top: -15px;
+      margin-left: 16px;
+      padding: 8px 16px;
+      background-color: #ee3b3b;
+      width: auto;
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      align-self: start;
+      border-radius: 16px;
+    }
+    &-title {
+      padding: 16px 24px;
+      color: #333;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 26px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+    &-info {
+      padding: 8px 24px 16px;
+      color: #333;
+      font-size: 14px;
+      & fa-icon {
+        color: #91979b;
+      }
+    }
+  }
+}
