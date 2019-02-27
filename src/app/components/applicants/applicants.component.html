@@ -23,9 +23,7 @@
         }"
       >
         <div class="applicants__row">
-          <span class="applicants__cell number center">
-            #{{ applicants.length - i }}
-          </span>
+          <span class="applicants__cell number center"> #{{ applicants.length - i }} </span>
           <span class="applicants__cell name">
             {{ applicant.firstName + ' ' + applicant.lastName }}
           </span>
@@ -42,10 +40,7 @@
             {{ applicant.phoneNumber }}
           </span>
         </div>
-        <div
-          class="applicants__details__container"
-          [ngClass]="{ active: activeDetails === i }"
-        >
+        <div class="applicants__details__container" [ngClass]="{ active: activeDetails === i }">
           <div class="applicants__details__box">
             <p>Ime</p>
             <h4 *ngIf="applicants[i]?.firstName">
@@ -100,10 +95,7 @@
               Nema podataka
             </h4>
           </div>
-          <div
-            class="applicants__details__box"
-            [ngClass]="{ hasValue: !!applicants[i]?.email }"
-          >
+          <div class="applicants__details__box" [ngClass]="{ hasValue: !!applicants[i]?.email }">
             <p>Email</p>
             <h4 *ngIf="applicants[i]?.email">{{ applicants[i]?.email }}</h4>
             <h4 class="no-data" *ngIf="!applicants[i]?.email">Nema podataka</h4>
