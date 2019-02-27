@@ -10,7 +10,7 @@ import { AboutComponent } from './components/about/about.component';
 import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
 
 import { PendingChangesGuard } from './guards/pending-changes.guard';
-import { ApplicantsListComponent } from './components/applicants-list/applicants-list.component';
+import { ApplicantsComponent } from './components/applicants/applicants.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -28,12 +28,12 @@ const routes: Routes = [
     ]
   },
   { path: 'about', component: AboutComponent },
-  { path: 'vrtic', component: ApplicantsListComponent },
+  { path: 'vrtic', component: ApplicantsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

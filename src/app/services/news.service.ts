@@ -3,11 +3,13 @@ import { Observable } from 'rxjs/Observable';
 import {
   AngularFirestore,
   AngularFirestoreCollection
-} from 'angularfire2/firestore';
+} from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-import { NewsPost, NewsPostWithID } from '../../models/news-post.model';
+import { NewsPost, NewsPostWithID } from '../models/news-post.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NewsService {
   private newsCollection: AngularFirestoreCollection<NewsPost>;
   news: Observable<NewsPost[]>;

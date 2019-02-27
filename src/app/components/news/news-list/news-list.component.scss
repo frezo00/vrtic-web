@@ -1,23 +1,29 @@
 @import '~src/_variables.scss';
 
 :host {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .news-list {
   &__content {
-    margin-bottom: 36px;
-    padding: 16px 24px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2em;
+    padding: 2em 0.5em;
     overflow-x: auto;
     @include xsmall {
-      padding-left: 16px;
-      padding-right: 16px;
+      flex-direction: column;
     }
   }
   &__item {
+    display: flex;
+    flex-direction: column;
     border-radius: 4px;
-    max-width: 460px !important;
+    max-width: 400px !important;
     background-color: white;
     text-decoration: none;
     overflow: hidden;
@@ -32,41 +38,50 @@
       cursor: pointer;
     }
     &-image {
-      min-height: 240px;
-      background: url('/assets/images/Glazbaonica-cover.jpeg') center center
+      min-height: 200px;
+      background: url('/assets/images/Glazbaonica-cover.png') center center
         no-repeat;
       background-size: cover;
     }
     &-category {
-      margin-top: -15px;
-      margin-left: 16px;
-      padding: 8px 16px;
-      background-color: #ee3b3b;
-      width: auto;
-      color: white;
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: 600;
-      align-self: start;
-      border-radius: 16px;
+      margin-top: -1.2em;
+    margin-left: 1.5em;
+    padding: 0.6em 1.6em;
+    background-color: #ee3b3b;
+    width: auto;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    line-height: 1.2em;
+    font-weight: 600;
+    align-self: start;
+    border-radius: 1.2em;
     }
     &-title {
-      padding: 16px 24px;
+      padding: 0.8em 1em;
       color: #333;
-      font-size: 20px;
+      font-size: 1.3em;
       font-weight: 600;
-      line-height: 26px;
+      line-height: 1.4em;
       white-space: pre-wrap;
       overflow-wrap: break-word;
       word-wrap: break-word;
     }
     &-info {
-      padding: 8px 24px 16px;
-      color: #333;
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      padding: 0.5em 1.5em 1.5em;
+    color: #333;
+    font-size: 0.9em;
       & fa-icon {
         color: #91979b;
+        margin-right: 0.5em;
       }
+    }
+    &-date {
+      display: flex;
+      align-items: center;
+      margin-right: 2.5em;
     }
   }
 }

@@ -7,22 +7,19 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  @Output()
-  cancel: EventEmitter<boolean> = new EventEmitter();
-  @Output()
-  confirm: EventEmitter<boolean> = new EventEmitter();
-
+  @Output() cancel: EventEmitter<boolean> = new EventEmitter();
+  @Output() confirm: EventEmitter<boolean> = new EventEmitter();
   cancelIcon = faTimes;
 
   constructor() {}
 
   ngOnInit() {}
 
-  onCancel() {
+  onCancel(): void {
     this.cancel.emit();
   }
 
-  onConfirm() {
+  onConfirm(): void {
     this.confirm.emit();
   }
 }

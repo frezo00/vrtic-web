@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicantService } from '../apply-form/applicant.service';
 import { Applicant } from '../../models/applicant.model';
+import { ApplicantsService } from '../../services';
 
 @Component({
-  selector: 'app-applicants-list',
-  templateUrl: './applicants-list.component.html',
-  styleUrls: ['./applicants-list.component.scss']
+  selector: 'app-applicants',
+  templateUrl: './applicants.component.html',
+  styleUrls: ['./applicants.component.scss']
 })
-export class ApplicantsListComponent implements OnInit {
+export class ApplicantsComponent implements OnInit {
   applicants: Applicant[];
   activeDetails = -1;
   loading = false;
-  activeTab = 1;
 
-  constructor(private applicantService: ApplicantService) {}
+  constructor(private applicantsService: ApplicantsService) {}
 
   ngOnInit() {
     this.loadApplicants();
@@ -21,19 +20,13 @@ export class ApplicantsListComponent implements OnInit {
 
   loadApplicants(): void {
     this.loading = true;
-    this.applicantService.getApplicants().subscribe(
+    this.applicantsService.getApplicants().subscribe(
       (applicants: Applicant[]) => {
         this.applicants = applicants;
         this.loading = false;
       },
       error => console.log(error)
     );
-  }
-
-  setActiveTab(tabNumber: number): void {
-    if (this.activeTab !== tabNumber) {
-      this.activeTab = tabNumber;
-    }
   }
 
   showInfo(index: number): void {

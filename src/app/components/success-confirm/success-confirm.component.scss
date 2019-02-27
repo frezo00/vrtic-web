@@ -1,12 +1,29 @@
+@import '~src/_variables.scss';
+
+.success-confirm {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5em 0;
+  }
+  &__action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include xsmall {
+      flex-direction: column;
+    }
+  }
+}
+
+// Success Animation
 .check_mark {
   width: 80px;
   height: 130px;
   margin: 0 auto;
 }
-.success-confirm-container {
-  padding: 40px 0;
-}
-
 .sa-text {
   color: #333;
   margin: 0 0 24px;
@@ -14,7 +31,6 @@
   text-align: center;
   line-height: 36px;
 }
-
 .sa-icon {
   width: 80px;
   height: 80px;
@@ -26,11 +42,9 @@
   position: relative;
   box-sizing: content-box;
 }
-
 .sa-icon.sa-success {
   border-color: #1db954;
 }
-
 .sa-icon.sa-success::before,
 .sa-icon.sa-success::after {
   content: '';
@@ -42,7 +56,6 @@
   background: white;
   transform: rotate(45deg);
 }
-
 .sa-icon.sa-success::before {
   border-radius: 120px 0 0 120px;
   top: -7px;
@@ -50,7 +63,6 @@
   transform: rotate(-45deg);
   transform-origin: 60px 60px;
 }
-
 .sa-icon.sa-success::after {
   border-radius: 0 120px 120px 0;
   top: -11px;
@@ -58,7 +70,6 @@
   transform: rotate(-45deg);
   transform-origin: 0px 60px;
 }
-
 .sa-icon.sa-success .sa-placeholder {
   width: 80px;
   height: 80px;
@@ -71,7 +82,6 @@
   top: -4px;
   z-index: 1;
 }
-
 .sa-icon.sa-success .sa-fix {
   width: 5px;
   height: 90px;
@@ -82,11 +92,9 @@
   z-index: 0;
   transform: rotate(-45deg);
 }
-
 .sa-icon.sa-success.animate::after {
   animation: rotatePlaceholder 4.25s ease-in;
 }
-
 .sa-icon.sa-success {
   border-color: transparent\9;
 }
@@ -96,11 +104,9 @@
 .sa-icon.sa-success .sa-line.sa-long {
   transform: rotate(-45deg) \9;
 }
-
 .animateSuccessTip {
   animation: animateSuccessTip 0.75s;
 }
-
 .animateSuccessLong {
   animation: animateSuccessLong 0.75s;
 }
@@ -204,7 +210,6 @@
     top: 38px;
   }
 }
-
 .sa-icon.sa-success .sa-line {
   height: 5px;
   background-color: #1db954;
@@ -213,21 +218,18 @@
   position: absolute;
   z-index: 1;
 }
-
 .sa-icon.sa-success .sa-line.sa-tip {
   width: 25px;
   left: 14px;
   top: 46px;
   transform: rotate(45deg);
 }
-
 .sa-icon.sa-success .sa-line.sa-long {
   width: 47px;
   right: 8px;
   top: 38px;
   transform: rotate(-45deg);
 }
-
 @-webkit-keyframes rotatePlaceholder {
   0% {
     transform: rotate(-45deg);

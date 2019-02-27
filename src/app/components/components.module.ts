@@ -5,9 +5,7 @@ import {
   FormsModule,
   ReactiveFormsModule
 } from '../../../node_modules/@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { RecaptchaModule } from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -21,7 +19,7 @@ import { ClickOutsideDirective } from '../directives/click-outside.directive';
 import { LoadingComponent } from './loading/loading.component';
 import { SuccessConfirmComponent } from './success-confirm/success-confirm.component';
 import { ModalComponent } from './modal/modal.component';
-import { ApplicantsListComponent } from './applicants-list/applicants-list.component';
+import { ApplicantsComponent } from './applicants/applicants.component';
 import { AgePipe } from '../pipes/age.pipe';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
@@ -42,7 +40,7 @@ import { AboutHomeComponent } from './about/about-home/about-home.component';
     ClickOutsideDirective,
     SuccessConfirmComponent,
     ModalComponent,
-    ApplicantsListComponent,
+    ApplicantsComponent,
     AgePipe,
     AboutComponent,
     FooterComponent,
@@ -56,9 +54,7 @@ import { AboutHomeComponent } from './about/about-home/about-home.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
-    RecaptchaModule.forRoot(),
-    RecaptchaFormsModule,
+    NgxCaptchaModule,
     NgxMyDatePickerModule.forRoot(),
     FontAwesomeModule
   ],

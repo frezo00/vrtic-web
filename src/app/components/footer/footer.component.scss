@@ -1,67 +1,113 @@
+@import '~src/_variables.scss';
+
+:host {
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+}
+
 .footer {
   &__container {
-    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
   }
   &__content {
-    padding: 50px 16px 20px;
+    padding: 1em 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 2em;
+    width: 100%;
+    @include xsmall {
+      grid-template-columns: 1fr;
+    }
   }
-  &__navigation-title,
+  &__contact,
+  &__social-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__social-media-title,
   &__contact-title {
     color: #91979b;
-    text-transform: uppercase;
-    font-size: 14px;
+    font-size: 1em;
+    line-height: 1.4em;
     letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 1em 0;
   }
-  &__navigation-list,
+
   &__social-media-list,
   &__contact-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  &__navigation-item,
-  &__social-media-item,
-  &__contact-item {
-    padding: 8px 0;
+  &__social-media-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
   }
-  &__navigation-link,
+
   &__social-media-link,
   &__contact-link {
     text-decoration: none;
-    color: rgba($color: #ffffff, $alpha: 0.9);
+    color: rgba($color: #ffffff, $alpha: 0.8);
+    font-size: 0.9em;
+    line-height: 1.4em;
+    font-weight: 500;
     transition: color 0.3s;
     &:hover {
-      color: #1db954;
+      color: #91979b;
     }
   }
+
   &__social-media-link {
-    font-size: 40px;
+    font-size: 2.5em;
     padding: 0 4px;
     &:hover {
       color: #91979b;
     }
   }
+
   &__contact-item {
-    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
     &:last-child {
       margin-bottom: 0;
     }
+    &-phone {
+      display: flex;
+      flex-direction: column;
+    }
     & fa-icon {
       color: #91979b;
-      font-size: 20px;
-      min-width: 20px;
+      font-size: 1em;
+      min-width: 1em;
       text-align: center;
+      margin-right: 1em;
     }
   }
-  &__contact-link {
-    font-size: 14px;
+
+  &__copyrights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 0 0.5em;
   }
   &__logo {
-    margin: 20px 0;
+    margin-top: 0.5em;
+    text-align: center;
   }
   &__rights {
     color: #91979b;
-    font-size: 14px;
+    font-size: 0.8em;
   }
 }

@@ -4,8 +4,15 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+.container {
+  max-width: 1024px;
+  width: 100%;
+  padding: 0 8px;
 }
 
 ngx-my-date-picker > .ngxmdp > .selector {
@@ -21,17 +28,20 @@ ngx-my-date-picker > .ngxmdp > .selector {
 }
 
 .action-button {
-  padding: 20px 60px;
-  margin: 4px 12px;
+  padding: 1em;
+  min-width: 200px;
+  margin: 0.5em 0;
   text-decoration: none;
-  border: 2px solid transparent;
-  border-radius: 36px;
+  border: none;
+  border-radius: 2em;
   background-color: #1db954;
   color: white;
-  font-size: 16px;
+  font-size: 1em;
+  line-height: 1.4em;
   text-transform: uppercase;
+  text-align: center;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   transition: background-color 0.3s;
 
   &:focus {
@@ -43,7 +53,7 @@ ngx-my-date-picker > .ngxmdp > .selector {
     border-color: #1db954;
   }
   &.small {
-    padding: 12px 36px;
+    padding: 0.8em 1.4em;
     text-transform: initial;
     letter-spacing: 0;
   }

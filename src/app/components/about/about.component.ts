@@ -9,8 +9,18 @@ import {
 
 @Component({
   selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  template: `
+    <div class="about__container">
+      <app-subheader [title]="'O nama'" [subtitle]="'Sve informacije o Glazbaonici'"></app-subheader>
+      <app-about-home style="background-color: white;"></app-about-home>
+    </div>
+  `,
+  styles: [`
+    .about-container {
+      display: flex;
+      flex-direction: column;
+    }
+  `]
 })
 export class AboutComponent implements OnInit {
   whoWeAreIcon = faUsers;

@@ -11,7 +11,7 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { validateEmail, validatePhoneNumber } from '../../validators';
 import { myDatePickerOptions } from '../common/ngx-mydatepicker.options';
 import { Router } from '../../../../node_modules/@angular/router';
-import { ApplicantService } from './applicant.service';
+import { ApplicantsService } from '../../services';
 import { Applicant } from '../../models/applicant.model';
 
 @Component({
@@ -50,11 +50,11 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     public changeDetectorRef: ChangeDetectorRef,
     public media: MediaMatcher,
     public route: Router,
-    public applicantService: ApplicantService
+    public applicantsService: ApplicantsService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 768px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery.addEventListener('change', this._mobileQueryListener);
   }
 
   private _mobileQueryListener: () => void;
@@ -67,7 +67,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.openModal = true;
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
   }
 
   initFormControls(): void {
@@ -90,7 +90,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     ]);
     this.email = new FormControl('', validateEmail);
     this.message = new FormControl('', Validators.maxLength(500));
-    this.recaptcha = new FormControl(null);
+    this.recaptcha = new FormControl('');
   }
 
   initForm(): void {
@@ -141,12 +141,12 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
 
   saveApplicant(applicantData: Applicant): void {
     this.loading = true;
-    this.applicantService
+    this.applicantsService
       .addApplicant(applicantData)
       .then(() => {
         this.loading = false;
         this.success = true;
-        this.recaptcha.reset();
+        // this.recaptcha.reset();
         this.applyForm.reset();
       })
       .catch(error => console.log('error occured', error));
@@ -154,8 +154,13 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
 
   resetForm(): void {
     this.success = false;
-    this.recaptcha.reset();
+    // this.recaptcha.reset();
     this.applyForm.reset();
+  }
+
+  handleSuccess(response: any): void {
+    this.recaptcha.setValue(response);
+    this.onSubmit();
   }
 
   canDeactivate(targetUrl: string, currentUrl: string): boolean {

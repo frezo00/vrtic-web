@@ -1,14 +1,14 @@
-<div class="news-list__content" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="space-between center">
-  <a *ngFor="let newsPost of news" [routerLink]="['/novosti', newsPost?.id ]" class="news-list__item" fxLayout="column" fxLayoutAlign="end strech">
+<div *ngIf="!!news" class="news-list__content">
+  <a *ngFor="let newsPost of news" [routerLink]="['/novosti', newsPost?.id ]" class="news-list__item">
     <div class="news-list__item-image"></div>
     <div class="news-list__item-category">{{ newsPost?.category }}</div>
     <div class="news-list__item-title">{{ newsPost?.title }}</div>
-    <div class="news-list__item-info" fxLayoutAlign="start center" fxLayoutGap="36px">
-      <div class="news-list__item-date" fxLayoutAlign="center center" fxLayoutGap="8px">
+    <div class="news-list__item-info">
+      <div class="news-list__item-date">
         <fa-icon [icon]="calendarIcon"></fa-icon>
-        <span>{{ newsPost?.datePosted | date:'dd.MM.yyyy' }}</span>
+        <span>{{ newsPost?.datePosted | date:'dd.MM.yyyy.' }}</span>
       </div>
-      <div class="news-list__item-author" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <div class="news-list__item-author">
         <fa-icon [icon]="userIcon"></fa-icon>
         <span>{{ newsPost?.createdBy }}</span>
       </div>
@@ -16,4 +16,4 @@
   </a>
 </div>
 
-<app-loading *ngIf="!!loading" fxLayout="column" fxLayoutAlign="center center"></app-loading>
+<app-loading *ngIf="!!loading"></app-loading>

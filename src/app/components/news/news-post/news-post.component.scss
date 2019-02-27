@@ -1,32 +1,35 @@
-:host {
-  justify-content: center;
-  align-items: center;
-}
+@import '~src/_variables.scss';
 
 .news-post {
   &__container {
-    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.5em;
   }
   &__category {
     text-transform: uppercase;
     color: #ee3b3b;
     & > h3 {
-      font-size: 14px;
+      font-size: 0.9em;
     }
   }
   &__title > h2 {
     margin-top: 0;
     margin-bottom: 8px;
     color: #333;
-    line-height: 1.2em;
-    font-size: 30px;
+    line-height: 1.4em;
+    font-size: 1.6em;
   }
   &__info {
-    padding: 16px 4px 24px;
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
     color: #333;
-    font-size: 14px;
+    font-size: 0.9em;
+    margin-bottom: 1em;
     & fa-icon {
       color: #91979b;
+      margin-right: 0.5em;
     }
   }
   &__image {
@@ -34,9 +37,16 @@
       width: 100%;
     }
   }
+  &__date-posted,
+  &__created-by {
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+  }
+
   &__text {
     color: #333;
     line-height: 1.4em;
-    margin: 16px 0;
+    margin: 1em 0;
   }
 }

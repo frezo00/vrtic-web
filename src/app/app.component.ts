@@ -2,8 +2,21 @@ import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <div class="main-container">
+      <app-header [ngStyle]="{ 'background-color': bgColor() }"></app-header>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  `,
+  styles: [
+    `
+      .main-container {
+        display: flex;
+        flex-direction: column;
+      }
+    `
+  ]
 })
 export class AppComponent {
   alpha = 0;
@@ -24,7 +37,7 @@ export class AppComponent {
     }
   }
 
-  bgColor() {
+  bgColor(): string {
     return `rgba(51,51,51,${this.alpha})`;
   }
 }
