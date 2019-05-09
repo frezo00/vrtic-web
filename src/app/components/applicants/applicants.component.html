@@ -15,11 +15,7 @@
       </div>
       <div
         class="applicants__item"
-        *ngFor="
-          let applicant of applicants;
-          trackBy: applicant?.id;
-          let i = index
-        "
+        *ngFor="let applicant of applicants; let i = index"
         (click)="showInfo(i)"
         [ngClass]="{
           accepted: !!applicant?.isMember,
