@@ -16,7 +16,9 @@ export interface CanComponentDeactivate {
   openModal: boolean;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PendingChangesGuard
   implements CanDeactivate<CanComponentDeactivate> {
   canDeactivate(

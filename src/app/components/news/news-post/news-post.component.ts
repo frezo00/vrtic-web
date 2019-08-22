@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { DocumentSnapshot } from 'angularfire2/firestore';
+import { DocumentSnapshot } from '@angular/fire/firestore';
 import { faCalendarAlt, faUser } from '@fortawesome/free-regular-svg-icons';
 
-import { NewsService } from '../news.service';
+import { NewsService } from '../../../services';
 import { NewsPost } from '../../../models/news-post.model';
 
 @Component({
@@ -22,8 +21,7 @@ export class NewsPostComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private newsService: NewsService,
-    private location: Location
+    private newsService: NewsService
   ) {}
 
   ngOnInit() {

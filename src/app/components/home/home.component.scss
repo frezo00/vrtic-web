@@ -1,15 +1,23 @@
 .home {
   &__news-list {
-    &__container {
+    &__wrapper {
+      display: flex;
+      justify-content: center;
       background-color: #fafafa;
-      padding-bottom: 40px;
+      padding-bottom: 2.5em;
+    }
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     &__title {
-      margin-top: 20px;
+      margin-top: 1em;
+      text-align: center;
       &-text {
         color: #333;
-        font-size: 36px;
-        margin-bottom: 16px;
+        font-size: 2em;
+        margin-bottom: 0.5em;
       }
       &-underline {
         height: 4px;

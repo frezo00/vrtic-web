@@ -11,9 +11,4 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
-  close(event: any) {
-    console.log('event is: ', event);
-    this.openMenu = !event;
-  }
 }

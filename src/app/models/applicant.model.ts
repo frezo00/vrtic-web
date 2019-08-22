@@ -5,7 +5,9 @@ export interface Applicant {
   parentsNames: string;
   phoneNumber: string;
   dateCreated: any;
+  id?: string;
   email?: string;
   message?: string;
   recaptcha?: string;
+  isMember?: boolean;
 }

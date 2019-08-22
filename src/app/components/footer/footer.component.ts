@@ -9,6 +9,7 @@ import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  today: Date;
   facebookIcon = faFacebook;
   instagramIcon = faInstagram;
   mailIcon = faEnvelope;
@@ -17,5 +18,7 @@ export class FooterComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.today = new Date();
+  }
 }

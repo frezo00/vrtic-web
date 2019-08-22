@@ -1,67 +1,58 @@
-<footer class="footer__container" fxLayoutAlign="center center">
-  <div class="footer__content" fxLayout="column" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="space-between strech" fxLayoutGap="60px">
-    <div fxLayout.xs="column" fxLayoutAlign.xs="space-around strech" fxLayoutAlign.gt-xs="space-around start" fxLayoutGap.xs="20px"
-      fxLayoutGap.gt-xs="12px">
-      <div class="footer__contact" fxFlex="100%" fxFlex.gt-xs="30%">
-        <h3 class="footer__contact-title">Kontakt</h3>
-        <ul class="footer__contact-list">
-          <li class="footer__contact-item" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
-            <fa-icon [icon]="markerIcon"></fa-icon>
-            <a href="https://goo.gl/maps/nS6EFVeqqvG2" target="__blank" class="footer__contact-link">
-              S. S. Kranjčevića 6, 88240, Posušje, BiH
+<footer class="footer__container container">
+  <div class="footer__content">
+    <div class="footer__contact">
+      <h3 class="footer__contact-title">Kontakt</h3>
+      <ul class="footer__contact-list">
+        <li class="footer__contact-item">
+          <fa-icon [icon]="markerIcon"></fa-icon>
+          <a href="https://goo.gl/maps/nS6EFVeqqvG2" target="__blank" class="footer__contact-link">
+            S. S. Kranjčevića 6, 88240, Posušje, BiH
+          </a>
+        </li>
+        <li class="footer__contact-item">
+          <fa-icon [icon]="phoneIcon"></fa-icon>
+          <div class="footer__contact-item-phone">
+            <a href="tel:+38763468055" target="__blank" class="footer__contact-link">
+              063-468-055 - Marija
             </a>
-          </li>
-          <li class="footer__contact-item" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
-            <fa-icon [icon]="phoneIcon"></fa-icon>
-            <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
-              <a href="tel:+38763468055" target="__blank" class="footer__contact-link">
-                063-468-055 - Marija
-              </a>
-              <a href="tel:+38763464617" target="__blank" class="footer__contact-link">
-                063-464-617 - Marina
-              </a>
-            </div>
-          </li>
-          <li class="footer__contact-item" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
-            <fa-icon [icon]="mailIcon"></fa-icon>
-            <a href="mailto:glazbaonica.posusje@gmail.com" class="footer__contact-link">
-              glazbaonica.posusje@gmail.com
+            <a href="tel:+38763464617" target="__blank" class="footer__contact-link">
+              063-464-617 - Marina
             </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__social-media" fxFlex="100%" fxFlex.gt-xs="30%">
-        <h3 class="footer__social-media-title">Društvene mreže</h3>
-        <ul class="footer__social-media-list" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
-          <li class="footer__social-media-item">
-            <a href="https://www.facebook.com/glazbenivrtic.posusje" target="__blank" class="footer__social-media-link facebook">
-              <fa-icon [icon]="facebookIcon"></fa-icon>
-            </a>
-          </li>
-          <li class="footer__social-media-item">
-            <a href="https://www.instagram.com/glazbenivrtic" target="__blank" class="footer__social-media-link instagram">
-              <fa-icon [icon]="instagramIcon"></fa-icon>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__navigation" fxFlex="100%" fxFlex.gt-xs="30%">
-        <h3 class="footer__navigation-title">Navigacija</h3>
-        <ul class="footer__navigation-list">
-          <li class="footer__navigation-item"><a [routerLink]="['/']" class="footer__navigation-link">Početna</a></li>
-          <li class="footer__navigation-item"><a [routerLink]="['/upisi']" class="footer__navigation-link">Upisi</a></li>
-          <li class="footer__navigation-item"><a [routerLink]="['/novosti']" class="footer__navigation-link">Novosti</a></li>
-          <li class="footer__navigation-item"><a [routerLink]="['/about']" class="footer__navigation-link">O nama</a></li>
-        </ul>
-      </div>
+          </div>
+        </li>
+        <li class="footer__contact-item">
+          <fa-icon [icon]="mailIcon"></fa-icon>
+          <a href="mailto:glazbaonica.posusje@gmail.com" class="footer__contact-link">
+            glazbaonica.posusje@gmail.com
+          </a>
+        </li>
+      </ul>
     </div>
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <a [routerLink]="['/']" class="footer__logo">
-        <img src="assets/images/logo/white_6.png" alt="Logo Footer">
-      </a>
-      <div>
-        <p class="footer__rights">&copy; 2018, <span>Developed by <b>Frano Rezo</b></span> </p>
-      </div>
+    <div class="footer__social-media">
+      <h3 class="footer__social-media-title">Društvene mreže</h3>
+      <ul class="footer__social-media-list">
+        <li class="footer__social-media-item">
+          <a href="https://www.facebook.com/glazbenivrtic.posusje" target="__blank" class="footer__social-media-link facebook">
+            <fa-icon [icon]="facebookIcon"></fa-icon>
+          </a>
+        </li>
+        <li class="footer__social-media-item">
+          <a href="https://www.instagram.com/glazbenivrtic" target="__blank" class="footer__social-media-link instagram">
+            <fa-icon [icon]="instagramIcon"></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__copyrights">
+    <a [routerLink]="['/']" class="footer__logo">
+      <img src="assets/images/logo/white_6.png" alt="Logo Footer">
+    </a>
+    <div>
+      <p class="footer__rights">
+        &copy; {{today | date: 'yyyy'}},
+        <span>Developed by <b>Frano Rezo</b></span>
+      </p>
     </div>
   </div>
 </footer>

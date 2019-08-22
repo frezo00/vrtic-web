@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faCalendarAlt, faUser } from '@fortawesome/free-regular-svg-icons';
 
-import { NewsService } from '../news.service';
+import { NewsService } from '../../../services';
 import { NewsPostWithID } from '../../../models/news-post.model';
 
 @Component({

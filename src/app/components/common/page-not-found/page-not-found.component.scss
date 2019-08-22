@@ -1,0 +1,48 @@
+:host {
+  background: linear-gradient(
+    to bottom,
+    #ee3b3b 0,
+    #f53e3e 25%,
+    #f74747 50%,
+    #fb4f4f 75%,
+    #ff5959 100%
+  );
+}
+
+.pnf {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-height: 500px;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+    & > h1 {
+      color: white;
+      font-size: 6em;
+      margin: 0;
+    }
+    & > p {
+      color: rgba($color: white, $alpha: 0.8);
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
+  }
+  &__action {
+    display: flex;
+    align-items: center;
+    & > button {
+      background-color: rgba($color: white, $alpha: 0.8);
+      color: #ee3b3b;
+      &:hover {
+        background-color: white;
+      }
+    };
+  }
+}

@@ -1,4 +1,4 @@
-<div class="success-confirm-container" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+<div class="success-confirm__container">
   <div class="check_mark">
     <div class="sa-icon sa-success animate">
       <span class="sa-line sa-tip animateSuccessTip"></span>
@@ -9,7 +9,7 @@
   </div>
   <p class="sa-text">Hvala na uspješnoj prijavi za
     <br> Glazbeni Vrtić</p>
-  <div class="action-container" fxLayout.lt-md="column" fxLayoutAlign="space-between strech">
+  <div class="success-confirm__action">
     <button class="action-button small" (click)="onResetForm()">Ispuni novu prijavu</button>
     <button class="action-button outline small" [routerLink]="[ '/' ]">Natrag na početnu</button>
   </div>

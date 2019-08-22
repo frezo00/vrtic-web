@@ -1,20 +1,28 @@
-@import '~src/_variables.scss';
+@import '../../../_variables.scss';
 
 .image-slides {
   &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     min-height: 100vh;
     background: url('/assets/images/gtk.jpg') left center no-repeat;
     background-size: cover;
 
     @include xsmall {
-      min-height: 640px;
+      min-height: 480px;
     }
     @include small {
-      min-height: 640px;
+      min-height: 480px;
     }
   }
   &__content {
-    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
   }
   &__title {
     margin: 0;
@@ -23,16 +31,20 @@
     color: rgba($color: #ffffff, $alpha: 1);
 
     @include xsmall {
-      font-size: 48px;
+      font-size: 10vw;
     }
   }
   &__description {
     color: rgba($color: #ffffff, $alpha: 0.9);
     margin: 0px;
-    padding: 16px 0;
+    padding: 2vh 0;
     text-align: center;
-    font-size: 1.4em;
-    line-height: 1.6em;
+    font-size: 1.2em;
+    line-height: 1.4em;
+
+    @include xsmall {
+      font-size: 4vw;
+    }
   }
   &__link-btn:hover {
     background-color: #4bdf80;

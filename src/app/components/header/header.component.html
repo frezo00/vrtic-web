@@ -1,10 +1,10 @@
-<div class="header__container" fxFlex="100%" fxFlex.gt-sm="80%" fxLayoutAlign="space-between center" fxFlexFill>
+<div class="header__container container">
   <div [ngClass]="{'show': !!openMenu}" class="mobile-nav-backdrop" (click)="openMenu = !openMenu"></div>
-  <a [routerLink]="[ '/' ]" class="header__logo-container" fxLayoutAlign="start center">
+  <a [routerLink]="[ '/' ]" class="header__logo-container">
     <img class="header__logo-img" src="../../../assets/images/logo/white_6.png" alt="Logo">
   </a>
   <nav class="header__navigation__container">
-    <ul class="header__navigation__box" fxHide.lt-md fxLayoutAlign="space-around center">
+    <ul class="header__navigation__box">
       <li class="header__navigation__item">
         <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__navigation__link">Početna</a>
       </li>
@@ -19,8 +19,8 @@
       </li>
     </ul>
     <div class="header__side-navigation">
-      <div class="header__mobile-navigation__container" [ngClass]="{'opened': openMenu}" fxLayout="column" fxLayoutAlign="space-between start">
-        <ul class="header__mobile-navigation__box" fxLayout="column" fxLayoutAlign="space-around start" (click)="openMenu = !openMenu">
+      <div class="header__mobile-navigation__container" [ngClass]="{'opened': openMenu}">
+        <ul class="header__mobile-navigation__box" (click)="openMenu = !openMenu">
           <li class="header__mobile-navigation__item">
             <a [routerLink]="[ '/' ]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" class="header__mobile-navigation__link">Početna</a>
           </li>
@@ -38,9 +38,8 @@
           <img class="header__mobile-navigation__bottom-logo-img" src="../../../assets/images/logo/logo_text_white.png" alt="Logo">
         </a>
       </div>
-      <div class="header__icon" fxHide.gt-sm>
-        <button type="button" class="header__icon-button" [ngClass]="{'open-menu': openMenu}" (click)="openMenu = !openMenu" fxLayout="column"
-          fxLayoutAlign="center center" fxLayoutGap="5px">
+      <div class="header__icon">
+        <button type="button" class="header__icon-button" [ngClass]="{'open-menu': openMenu}" (click)="openMenu = !openMenu">
           <span class="header__icon-bar"></span>
           <span class="header__icon-bar"></span>
           <span class="header__icon-bar"></span>

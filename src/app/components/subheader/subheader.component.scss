@@ -1,33 +1,47 @@
-@import '~src/_variables.scss';
+@import '../../../_variables.scss';
+
+:host {
+  display: flex;
+  justify-content: center;
+  min-height: 280px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    #ee3b3b 0,
+    #f53e3e 25%,
+    #f74747 50%,
+    #fb4f4f 75%,
+    #ff5959 100%
+  );
+  @include xsmall {
+    min-height: 220px;
+  }
+}
 
 .subheader {
   &__container {
-    min-height: 340px;
-    width: 100%;
-    background: linear-gradient(
-      to bottom,
-      #ee3b3b 0,
-      #f53e3e 25%,
-      #f74747 50%,
-      #fb4f4f 75%,
-      #ff5959 100%
-    );
-
-    @include xsmall {
-      min-height: 250px;
-    }
+    display: flex;
+    align-items: center;
+    flex: 1 1 100%;
   }
   &__content {
-    padding: 20px;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
   }
   &__title {
-    margin-top: 34px;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     color: white;
-    font-size: 36px;
+    font-size: 2em;
+    line-height: 1.2em;
   }
   &__info {
     color: rgba($color: #ffffff, $alpha: 0.9);
     margin: 0;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 1.2em;
   }
 }
