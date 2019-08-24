@@ -1,18 +1,13 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
-import { INgxMyDpOptions } from 'ngx-mydatepicker';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { INgxMyDpOptions } from 'ngx-mydatepicker';
+import { Router } from '../../../../node_modules/@angular/router';
+import { Applicant } from '../../models/applicant.model';
+import { ApplicantsService } from '../../services';
 import { validateEmail, validatePhoneNumber } from '../../validators';
 import { myDatePickerOptions } from '../common/ngx-mydatepicker.options';
-import { Router } from '../../../../node_modules/@angular/router';
-import { ApplicantsService } from '../../services';
-import { Applicant } from '../../models/applicant.model';
 
 @Component({
   selector: 'app-apply-form',
@@ -35,7 +30,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   defaultMonth = `01-${new Date().getFullYear() - 8}`;
   date = new Date(new Date().getFullYear() - 9, 0, 1);
   minDate = new Date(new Date().getFullYear() - 8, 0, 1);
-  maxDate = new Date(new Date().getFullYear() - 5, 11, 31);
+  maxDate = new Date(new Date().getFullYear() - 5, 7, 31);
 
   formResult: any;
   loading = false;
@@ -71,23 +66,11 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   }
 
   initFormControls(): void {
-    this.firstName = new FormControl('', [
-      Validators.required,
-      Validators.maxLength(20)
-    ]);
-    this.lastName = new FormControl('', [
-      Validators.required,
-      Validators.maxLength(20)
-    ]);
+    this.firstName = new FormControl('', [Validators.required, Validators.maxLength(20)]);
+    this.lastName = new FormControl('', [Validators.required, Validators.maxLength(20)]);
     this.birthdate = new FormControl(null, Validators.required);
-    this.parentsNames = new FormControl('', [
-      Validators.required,
-      Validators.maxLength(40)
-    ]);
-    this.phoneNumber = new FormControl('', [
-      Validators.required,
-      validatePhoneNumber
-    ]);
+    this.parentsNames = new FormControl('', [Validators.required, Validators.maxLength(40)]);
+    this.phoneNumber = new FormControl('', [Validators.required, validatePhoneNumber]);
     this.email = new FormControl('', validateEmail);
     this.message = new FormControl('', Validators.maxLength(500));
     this.recaptcha = new FormControl('');
@@ -120,9 +103,6 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
         ...this.applyForm.value,
         dateCreated: new Date().toISOString()
       } as Applicant;
-      console.log('new Date', newDate);
-      console.log('form value: ', this.applyForm.value);
-      console.log('applicantData: ', applicantData);
       this.saveApplicant(applicantData);
     }
   }
