@@ -5,6 +5,7 @@ export interface NewsPost {
   createdBy: string;
   datePosted: string;
   coverImage: string;
+  description: string;
 }
 
 export interface NewsPostWithID extends NewsPost {

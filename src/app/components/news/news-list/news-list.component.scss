@@ -22,7 +22,7 @@
     overflow-x: auto;
     @include xsmall {
       flex-direction: column;
-      padding: 2em 0.5em;
+      padding: 2em 0;
     }
   }
   &__item {
@@ -39,7 +39,7 @@
     margin: 0 20px;
     @include xsmall {
       min-width: auto;
-      margin: 12px 0;
+      margin: 12px 8px;
     }
     &:hover {
       box-shadow: 0 14px 32px 0 rgba(0, 0, 0, 0.2);
