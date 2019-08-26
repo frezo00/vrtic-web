@@ -46,11 +46,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     public media: MediaMatcher,
     public route: Router,
     public applicantsService: ApplicantsService
-  ) {
-    this.mobileQuery = media.matchMedia('(max-width: 768px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addEventListener('change', this._mobileQueryListener);
-  }
+  ) {}
 
   private _mobileQueryListener: () => void;
 
@@ -58,11 +54,18 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     this.initFormControls();
     this.initForm();
     this.myOptions = myDatePickerOptions;
+
+    // Detect mobile devices
+    this.mobileQuery = this.media.matchMedia('screen and (max-width: 768px)');
+    this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
+    // this.mobileQuery.addEventListener('change', this._mobileQueryListener);
+    this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   ngOnDestroy() {
     this.openModal = true;
-    this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
+    // this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
+    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
   initFormControls(): void {
