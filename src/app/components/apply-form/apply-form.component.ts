@@ -1,7 +1,13 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  faFacebookSquare,
+  faInstagram,
+  faWhatsappSquare
+} from '@fortawesome/free-brands-svg-icons';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
 import { INgxMyDpOptions } from 'ngx-mydatepicker';
 import { Router } from '../../../../node_modules/@angular/router';
 import { Applicant, ISeoData } from '../../models';
@@ -40,6 +46,13 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
 
+  facebookIcon = faFacebookSquare;
+  instagramIcon = faInstagram;
+  whatsappIcon = faWhatsappSquare;
+
+  expirationDate: moment.Moment;
+  isExpired: boolean;
+
   constructor(
     public fb: FormBuilder,
     public changeDetectorRef: ChangeDetectorRef,
@@ -56,6 +69,8 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     this.initForm();
     this.setSeo();
     this.myOptions = myDatePickerOptions;
+    this.expirationDate = moment('08/09/2019', 'DD/MM/YYYY');
+    this.isExpired = moment().isSameOrAfter(this.expirationDate, 'date');
 
     // Detect mobile devices
     this.mobileQuery = this.media.matchMedia('screen and (max-width: 768px)');

@@ -183,3 +183,42 @@
     color: #333;
   }
 }
+
+.form-social {
+  line-height: 1.5;
+
+  &__title {
+    margin: 0 0 12px;
+    color: #333;
+  }
+
+  &__description {
+    margin-bottom: 12px;
+    color: rgba(#333, 0.8);
+  }
+
+  &-links {
+    display: flex;
+    padding: 16px 0;
+    @include xsmall {
+      justify-content: space-evenly;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin-right: 36px;
+    font-size: 32px;
+    color: #1c5167;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.06);
+    @include xsmall {
+      margin-right: 0;
+    }
+  }
+}
