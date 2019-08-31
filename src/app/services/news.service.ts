@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection
-} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NewsPost, NewsPostWithID } from '../models/news-post.model';
 
@@ -11,16 +8,10 @@ import { NewsPost, NewsPostWithID } from '../models/news-post.model';
   providedIn: 'root'
 })
 export class NewsService {
-  private newsCollection: AngularFirestoreCollection<NewsPost>;
-  news: Observable<NewsPost[]>;
+  constructor(private _afDB: AngularFirestore) {}
 
-  constructor(private afDB: AngularFirestore) {
-    this.newsCollection = this.afDB.collection<NewsPost>('/news');
-    this.news = this.newsCollection.valueChanges();
-  }
-
-  getNews(): Observable<NewsPost[]> {
-    return this.afDB
+  getNews(): Observable<NewsPostWithID[]> {
+    return this._afDB
       .collection<NewsPost>('news', ref => ref.orderBy('datePosted', 'desc'))
       .snapshotChanges()
       .pipe(
@@ -32,9 +23,5 @@ export class NewsService {
           })
         )
       );
-  }
-
-  getNewsPost(id: string): Promise<any> {
-    return this.newsCollection.doc<NewsPost>(id).ref.get();
   }
 }

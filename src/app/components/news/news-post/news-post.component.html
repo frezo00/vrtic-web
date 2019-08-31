@@ -1,24 +1,20 @@
-<div *ngIf="!!newsPost" class="news-post__container">
-  <div class="news-post__category">
-    <h3>{{ newsPost?.category }}</h3>
-  </div>
-  <div class="news-post__title">
-    <h2>{{ newsPost?.title }}</h2>
-  </div>
+<div *ngIf="article" class="news-post__container">
+  <h3 class="news-post__category">{{ article.category }}</h3>
+  <h2 class="news-post__title">{{ article.title }}</h2>
   <div class="news-post__info">
     <div class="news-post__date-posted">
       <fa-icon [icon]="calendarIcon"></fa-icon>
-      <span>{{ newsPost?.datePosted | date: 'dd.MM.yyyy.' }}</span>
+      <span>{{ article.datePosted | date: 'dd.MM.yyyy.' }}</span>
     </div>
     <div class="news-post__created-by">
       <fa-icon [icon]="userIcon"></fa-icon>
-      <span>{{ newsPost?.createdBy }}</span>
+      <span>{{ article.createdBy }}</span>
     </div>
   </div>
   <div class="news-post__image">
-    <img [src]="newsPost?.coverImage" alt="Post Image" />
+    <img [src]="article.coverImage" alt="Post Image" />
   </div>
-  <div class="news-post__text" [innerHTML]="newsPost?.content | sanitizeHtml"></div>
+  <div class="news-post__text" [innerHTML]="article.content | sanitizeHtml"></div>
 </div>
 
-<app-loading *ngIf="!!loading"></app-loading>
+<app-loading *ngIf="loading"></app-loading>

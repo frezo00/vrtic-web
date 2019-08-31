@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     const metaData: ISeoData = {
       url: '',
       type: 'website',
-      linkTitle: 'Početna',
+      linkTitle: 'Glazbaonica - Početna',
       description: 'Glazbeni vrtić - nove glazbene radosti kreću i ove jeseni. Pridruži nam se.',
       image: 'https://www.glazbaonica.com/assets/images/vrtic2.jpeg'
     };

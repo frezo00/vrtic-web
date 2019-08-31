@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ISeoData } from '../../models';
+import { SeoService } from '../../services';
 
 @Component({
   selector: 'app-news',
@@ -13,7 +15,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-  constructor() {}
+  constructor(private _seoService: SeoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const metaData: ISeoData = {
+      url: 'novosti',
+      type: 'website',
+      linkTitle: 'Glazbaonica - Novosti',
+      description: 'Najnovije glazbene vijesti',
+      image: 'https://www.glazbaonica.com/assets/images/vrtic2.jpeg'
+    };
+    this._seoService.setTitleAndMeta('Novosti', metaData);
+  }
 }

@@ -4,8 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { INgxMyDpOptions } from 'ngx-mydatepicker';
 import { Router } from '../../../../node_modules/@angular/router';
-import { Applicant } from '../../models/applicant.model';
-import { ApplicantsService } from '../../services';
+import { Applicant, ISeoData } from '../../models';
+import { ApplicantsService, SeoService } from '../../services';
 import { validateEmail, validatePhoneNumber } from '../../validators';
 import { myDatePickerOptions } from '../common/ngx-mydatepicker.options';
 
@@ -45,7 +45,8 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     public changeDetectorRef: ChangeDetectorRef,
     public media: MediaMatcher,
     public route: Router,
-    public applicantsService: ApplicantsService
+    public applicantsService: ApplicantsService,
+    private _seoService: SeoService
   ) {}
 
   private _mobileQueryListener: () => void;
@@ -53,6 +54,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.initFormControls();
     this.initForm();
+    this.setSeo();
     this.myOptions = myDatePickerOptions;
 
     // Detect mobile devices
@@ -90,6 +92,17 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
       message: this.message,
       recaptcha: this.recaptcha
     });
+  }
+
+  setSeo() {
+    const metaData: ISeoData = {
+      url: 'upisi',
+      type: 'website',
+      linkTitle: 'Glazbaonica - Upisi u Glazbeni Vrtić',
+      description: 'Upisi u tijeku',
+      image: 'https://www.glazbaonica.com/assets/images/vrtic2.jpeg'
+    };
+    this._seoService.setTitleAndMeta('Upisi u Glazbeni Vrtić', metaData);
   }
 
   onSubmit(): void {
