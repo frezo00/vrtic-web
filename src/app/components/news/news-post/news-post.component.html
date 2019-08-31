@@ -1,42 +1,20 @@
-<div *ngIf="!!newsPost" class="news-post__container">
-  <div class="news-post__category">
-    <h3>{{ newsPost?.category }}</h3>
-  </div>
-  <div class="news-post__title">
-    <h2>{{ newsPost?.title }}</h2>
-  </div>
+<div *ngIf="article" class="news-post__container">
+  <h3 class="news-post__category">{{ article.category }}</h3>
+  <h2 class="news-post__title">{{ article.title }}</h2>
   <div class="news-post__info">
     <div class="news-post__date-posted">
       <fa-icon [icon]="calendarIcon"></fa-icon>
-      <span>{{ newsPost?.datePosted | date:'dd.MM.yyyy.' }}</span>
+      <span>{{ article.datePosted | date: 'dd.MM.yyyy.' }}</span>
     </div>
     <div class="news-post__created-by">
       <fa-icon [icon]="userIcon"></fa-icon>
-      <span>{{ newsPost?.createdBy }}</span>
+      <span>{{ article.createdBy }}</span>
     </div>
   </div>
   <div class="news-post__image">
-    <img src="assets/images/Glazbaonica-cover.png" alt="Post Image">
+    <img [src]="article.coverImage" alt="Post Image" />
   </div>
-  <div class="news-post__text">
-    <p>
-      Došlo je vrijeme za još jedno druženje u našem Glazbenom vrtiću. Sva raspjevana djeca <b>od 5 i 6 godina</b>
-      pozvana su da nam se pridruže. Naš cilj je Vašoj djeci pomoći da zavole kvalitetnu glazbu i kroz igru razviju mnoge sposobnosti.
-    </p>
-    <p>
-      Aktivnosti s kojima će se susresti kroz naš program su pjevanje, izvođenje brojalica uz ritmičke i metričke pokrete, glazbene
-      igre, slušanje glazbe, likovni doživljaj, sviranje na dječjem instrumentariju, glazbene improvizacije, upoznavanje
-      raznih glazbenih instrumenata, izrađivanje dječjih instrumenata te javni nastup na glazbenim priredbama. Radionice
-      se održavaju <b>jednom tjedno u trajanju od 60 minuta</b>.
-    </p>
-    <p>
-      Upisati se možete na sljedećem <b><a [routerLink]="['/upisi']">linku</a></b>.<br> Upisi će biti otvoreni do početka
-      rujna 2018. godine. Detaljnije informacije možete dobiti na brojeve telefona:
-      <a href="tel:+38763468055">063/468-055</a> i <a href="tel:+38763464617">063/464-617</a>
-      ili putem facebook i instagram stranice: <b>Glazbeni vrtić Posušje</b>.
-    </p>
-    <p>Dajte svom djetetu priliku da doživi nezaboravne i uzbudljive trenutke. Radujemo se novim glazbenim avanturama!</p>
-  </div>
+  <div class="news-post__text" [innerHTML]="article.content | sanitizeHtml"></div>
 </div>
 
-<app-loading *ngIf="!!loading"></app-loading>
+<app-loading *ngIf="loading"></app-loading>

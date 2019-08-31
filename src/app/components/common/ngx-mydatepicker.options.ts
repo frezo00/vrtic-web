@@ -1,14 +1,9 @@
-import {
-  INgxMyDpOptions,
-  IMyDate,
-  IMyDayLabels,
-  IMyMonthLabels
-} from 'ngx-mydatepicker';
+import { IMyDate, IMyDayLabels, IMyMonthLabels, INgxMyDpOptions } from 'ngx-mydatepicker';
 
 const today = new Date();
 
 export const myDatePickerOptions: INgxMyDpOptions = {
-  dateFormat: 'dd.mm.yyyy',
+  dateFormat: 'dd. mm. yyyy',
   showTodayBtn: false,
   firstDayOfWeek: 'mo',
   selectorHeight: '250px',
@@ -24,18 +19,18 @@ export const myDatePickerOptions: INgxMyDpOptions = {
     sa: 'Sub'
   } as IMyDayLabels,
   monthLabels: {
-    1: 'Sij',
-    2: 'Vel',
-    3: 'Ožu',
-    4: 'Tra',
-    5: 'Svi',
-    6: 'Lip',
-    7: 'Srp',
-    8: 'Kol',
-    9: 'Ruj',
-    10: 'Lis',
-    11: 'Stu',
-    12: 'Pro'
+    1: 'Siječanj',
+    2: 'Veljača',
+    3: 'Ožujak',
+    4: 'Travanj',
+    5: 'Svibanj',
+    6: 'Lipanj',
+    7: 'Srpanj',
+    8: 'Kolovoz',
+    9: 'Rujan',
+    10: 'Listopad',
+    11: 'Studeni',
+    12: 'Prosinac'
   } as IMyMonthLabels,
   minYear: today.getFullYear() - 9,
   maxYear: today.getFullYear() - 4,
@@ -46,7 +41,7 @@ export const myDatePickerOptions: INgxMyDpOptions = {
   } as IMyDate,
   disableSince: {
     year: today.getFullYear() - 5,
-    month: 12,
+    month: 8,
     day: 31
   } as IMyDate
 };

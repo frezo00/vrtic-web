@@ -9,11 +9,9 @@
   &__category {
     text-transform: uppercase;
     color: #ee3b3b;
-    & > h3 {
-      font-size: 0.9em;
-    }
+    font-size: 0.9em;
   }
-  &__title > h2 {
+  &__title {
     margin-top: 0;
     margin-bottom: 8px;
     color: #333;

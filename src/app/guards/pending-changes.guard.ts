@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  CanDeactivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { FormGroup } from '@angular/forms';
 
 export interface CanComponentDeactivate {
   canDeactivate: (
@@ -19,15 +15,24 @@ export interface CanComponentDeactivate {
 @Injectable({
   providedIn: 'root'
 })
-export class PendingChangesGuard
-  implements CanDeactivate<CanComponentDeactivate> {
+export class PendingChangesGuard implements CanDeactivate<CanComponentDeactivate> {
   canDeactivate(
     component: CanComponentDeactivate,
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
-    return component.applyForm.dirty && !component.openModal
+    return this._hasChanges(component.applyForm) && !component.openModal
       ? component.canDeactivate(state.root.url, state.url)
       : true;
+  }
+
+  private _hasChanges(form: FormGroup): boolean {
+    if (form && form.controls) {
+      return Object.keys(form.controls)
+        .filter((key: string) => key !== 'recaptcha')
+        .map((key: string) => form.controls[key])
+        .some((control: AbstractControl) => control.dirty && control.touched && control.value);
+    }
+    return false;
   }
 }

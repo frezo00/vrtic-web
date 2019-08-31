@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app.routing';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { AngularFireLite } from 'angularfire-lite';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     ComponentsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireLite.forRoot(environment.firebase)
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]

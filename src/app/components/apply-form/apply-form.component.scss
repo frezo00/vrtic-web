@@ -1,5 +1,9 @@
 @import '../../../_variables.scss';
 
+:host {
+  background-color: #f5f5f5;
+}
+
 .form {
   &__container {
     display: flex;
@@ -57,7 +61,9 @@
     border: 1px solid #ccc;
     padding: 8px 20px;
     -webkit-appearance: none;
-    min-height: 26px;
+    min-height: 44px;
+    min-width: 100%;
+    background-color: white;
     color: #333;
     transition: border-color 0.3s;
 
@@ -81,6 +87,19 @@
       left: 8px;
       color: #e54352;
       font-size: 18px;
+    }
+    &:not([type='date']) {
+      @include placeholder {
+        opacity: 0.4;
+      }
+    }
+    &[type='date']::before {
+      content: attr(placeholder) !important;
+      opacity: 0.4;
+    }
+    &[type='date']:focus::before,
+    &[type='date']:valid::before {
+      content: '' !important;
     }
   }
 
@@ -125,7 +144,7 @@
     color: rgba($color: #333333, $alpha: 0.7);
     right: 0;
     top: 34px;
-    padding: 13px 20px 13px 0;
+    padding: 13px 20px 13px;
     border-radius: 24px;
     /* width: calc(100% - 20px); */
     text-align: right;
@@ -142,9 +161,9 @@
   &-container {
     display: flex;
     flex-direction: column;
-    background-color: #eee;
+    background-color: rgba(#3290b7, 0.2);
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(black, 0.2);
     padding: 2em;
     @include xsmall {
       padding: 1.5em;

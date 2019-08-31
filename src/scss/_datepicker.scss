@@ -1,0 +1,20 @@
+// ******************************************************************
+//    DATEPICKER STYLINGS - overriding default datepicker stylings
+// ******************************************************************
+ngx-my-date-picker {
+  // ------------
+  //    HEADER
+  // ------------
+  table.header tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+  }
+
+  table.header tr .headermonthtxt {
+    max-width: none;
+  }
+
+  // TODO: Continue with styling once the design is done
+}
