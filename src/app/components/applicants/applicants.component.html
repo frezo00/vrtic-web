@@ -1,11 +1,29 @@
 <div class="applicants__container">
-  <app-subheader
-    [title]="'Glazbeni Vrtić'"
-    [subtitle]="'Prijave za 2018. / 2019. godinu'"
-  ></app-subheader>
+  <app-subheader [title]="'Glazbeni Vrtić'"></app-subheader>
 
   <div class="applicants__content container">
-    <div class="applicants__table">
+    <div class="applicants-seasons">
+      <button
+        *ngFor="let season of seasons"
+        [ngClass]="{
+          'applicants-seasons__button--active': activeSeason && activeSeason.text === season.text
+        }"
+        (click)="setActiveSeason(season)"
+        class="applicants-seasons__button"
+      >
+        {{ season.text }}
+      </button>
+    </div>
+
+    <button
+      [ngClass]="{ 'applicants-form-icon--active': showForm }"
+      (click)="toggleForm()"
+      class="applicants-form-icon"
+    >
+      <fa-icon [icon]="formIcon"></fa-icon>
+    </button>
+
+    <div *ngIf="!showForm" class="applicants__table">
       <div class="applicants__row header">
         <span class="applicants__cell number center">#</span>
         <span class="applicants__cell name">Ime i Prezime</span>
@@ -14,109 +32,115 @@
         <span class="applicants__cell xs-hide">Imena roditelja</span>
         <span class="applicants__cell xs-hide">Kontakt broj</span>
       </div>
-      <div
-        class="applicants__item"
-        *ngFor="let applicant of applicants; let i = index"
-        (click)="showInfo(i)"
-        [ngClass]="{
-          accepted: !!applicant?.isMember,
-          opened: activeDetails === i
-        }"
-      >
-        <div class="applicants__row">
-          <span class="applicants__cell number center"> #{{ applicants.length - i }} </span>
-          <span class="applicants__cell name">
-            {{ applicant.firstName + ' ' + applicant.lastName }}
-          </span>
-          <span class="applicants__cell center">
-            {{ applicant.birthdate | age }}
-          </span>
-          <span class="applicants__cell sm-hide xs-hide">
-            {{ applicant.birthdate | date: 'dd.MM.yyyy' }}
-          </span>
-          <span class="applicants__cell xs-hide">
-            {{ applicant.parentsNames }}
-          </span>
-          <span class="applicants__cell xs-hide">
-            {{ applicant.phoneNumber }}
-          </span>
+
+      <ng-container *ngIf="applicants$ | async as applicants">
+        <div
+          *ngFor="let applicant of applicants; let i = index"
+          (click)="showInfo(i)"
+          [ngClass]="{
+            accepted: !!applicant?.isMember,
+            opened: activeDetails === i
+          }"
+          class="applicants__item"
+        >
+          <div class="applicants__row">
+            <span class="applicants__cell number center"> #{{ applicants?.length - i }} </span>
+            <span class="applicants__cell name">
+              {{ applicant.firstName + ' ' + applicant.lastName }}
+            </span>
+            <span class="applicants__cell center">
+              {{ applicant.birthdate | age }}
+            </span>
+            <span class="applicants__cell sm-hide xs-hide">
+              {{ applicant.birthdate | date: 'dd.MM.yyyy' }}
+            </span>
+            <span class="applicants__cell xs-hide">
+              {{ applicant.parentsNames }}
+            </span>
+            <span class="applicants__cell xs-hide">
+              {{ applicant.phoneNumber }}
+            </span>
+          </div>
+          <div class="applicants__details__container" [ngClass]="{ active: activeDetails === i }">
+            <div class="applicants__details__box">
+              <p>Ime</p>
+              <h4 *ngIf="applicants[i]?.firstName">
+                {{ applicants[i]?.firstName }}
+              </h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.firstName">
+                Nema podataka
+              </h4>
+            </div>
+            <div class="applicants__details__box">
+              <p>Prezime</p>
+              <h4 *ngIf="applicants[i]?.lastName">
+                {{ applicants[i]?.lastName }}
+              </h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.lastName">
+                Nema podataka
+              </h4>
+            </div>
+            <div class="applicants__details__box">
+              <p>Datum rođenja</p>
+              <h4 *ngIf="applicants[i]?.birthdate">
+                {{ applicants[i]?.birthdate | date: 'dd.MM.yyyy.' }}
+              </h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.birthdate">
+                Nema podataka
+              </h4>
+            </div>
+            <div class="applicants__details__box">
+              <p>Broj godina</p>
+              <h4 *ngIf="applicants[i]?.birthdate">
+                {{ applicants[i]?.birthdate | age }}
+              </h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.birthdate">
+                Nema podataka
+              </h4>
+            </div>
+            <div class="applicants__details__box">
+              <p>Imena roditelja</p>
+              <h4 *ngIf="applicants[i]?.parentsNames">
+                {{ applicants[i]?.parentsNames }}
+              </h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.parentsNames">
+                Nema podataka
+              </h4>
+            </div>
+            <div class="applicants__details__box">
+              <p>Kontakt broj</p>
+              <h4 *ngIf="applicants[i]?.phoneNumber">
+                {{ applicants[i]?.phoneNumber }}
+              </h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.phoneNumber">
+                Nema podataka
+              </h4>
+            </div>
+            <div class="applicants__details__box" [ngClass]="{ hasValue: !!applicants[i]?.email }">
+              <p>Email</p>
+              <h4 *ngIf="applicants[i]?.email">{{ applicants[i]?.email }}</h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.email">Nema podataka</h4>
+            </div>
+            <div
+              class="applicants__details__box message"
+              [ngClass]="{ hasValue: !!applicants[i]?.message }"
+            >
+              <p>Napomena</p>
+              <h4 *ngIf="applicants[i]?.message">{{ applicants[i]?.message }}</h4>
+              <h4 class="no-data" *ngIf="!applicants[i]?.message">
+                Nema podataka
+              </h4>
+            </div>
+          </div>
         </div>
-        <div class="applicants__details__container" [ngClass]="{ active: activeDetails === i }">
-          <div class="applicants__details__box">
-            <p>Ime</p>
-            <h4 *ngIf="applicants[i]?.firstName">
-              {{ applicants[i]?.firstName }}
-            </h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.firstName">
-              Nema podataka
-            </h4>
-          </div>
-          <div class="applicants__details__box">
-            <p>Prezime</p>
-            <h4 *ngIf="applicants[i]?.lastName">
-              {{ applicants[i]?.lastName }}
-            </h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.lastName">
-              Nema podataka
-            </h4>
-          </div>
-          <div class="applicants__details__box">
-            <p>Datum rođenja</p>
-            <h4 *ngIf="applicants[i]?.birthdate">
-              {{ applicants[i]?.birthdate | date: 'dd.MM.yyyy.' }}
-            </h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.birthdate">
-              Nema podataka
-            </h4>
-          </div>
-          <div class="applicants__details__box">
-            <p>Broj godina</p>
-            <h4 *ngIf="applicants[i]?.birthdate">
-              {{ applicants[i]?.birthdate | age }}
-            </h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.birthdate">
-              Nema podataka
-            </h4>
-          </div>
-          <div class="applicants__details__box">
-            <p>Imena roditelja</p>
-            <h4 *ngIf="applicants[i]?.parentsNames">
-              {{ applicants[i]?.parentsNames }}
-            </h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.parentsNames">
-              Nema podataka
-            </h4>
-          </div>
-          <div class="applicants__details__box">
-            <p>Kontakt broj</p>
-            <h4 *ngIf="applicants[i]?.phoneNumber">
-              {{ applicants[i]?.phoneNumber }}
-            </h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.phoneNumber">
-              Nema podataka
-            </h4>
-          </div>
-          <div class="applicants__details__box" [ngClass]="{ hasValue: !!applicants[i]?.email }">
-            <p>Email</p>
-            <h4 *ngIf="applicants[i]?.email">{{ applicants[i]?.email }}</h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.email">Nema podataka</h4>
-          </div>
-          <div
-            class="applicants__details__box message"
-            [ngClass]="{ hasValue: !!applicants[i]?.message }"
-          >
-            <p>Napomena</p>
-            <h4 *ngIf="applicants[i]?.message">{{ applicants[i]?.message }}</h4>
-            <h4 class="no-data" *ngIf="!applicants[i]?.message">
-              Nema podataka
-            </h4>
-          </div>
+        <div *ngIf="!applicants && !loading" class="applicants__empty">
+          <p>Nema podataka</p>
         </div>
-      </div>
-      <div *ngIf="!applicants && !loading" class="applicants__empty">
-        <p>Nema podataka</p>
-      </div>
-      <app-loading *ngIf="!!loading"></app-loading>
+      </ng-container>
+
+      <app-loading *ngIf="loading"></app-loading>
     </div>
+
+    <app-apply-form *ngIf="showForm"></app-apply-form>
   </div>
 </div>

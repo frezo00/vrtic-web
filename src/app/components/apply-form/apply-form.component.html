@@ -1,6 +1,5 @@
 <div class="form__content">
   <form
-    *ngIf="!isExpired"
     [formGroup]="applyForm"
     (ngSubmit)="onSubmit()"
     [ngStyle]="{ display: !success ? 'grid' : 'none' }"
