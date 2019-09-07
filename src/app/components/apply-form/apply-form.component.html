@@ -1,234 +1,195 @@
-<div *ngIf="!loading" class="form__container">
-  <app-subheader
-    [title]="'Glazbeni Vrtić'"
-    [subtitle]="'Upisi za 2019. / 2020. godinu'"
-  ></app-subheader>
-
-  <div class="form__wrapper container">
-    <div class="form__content">
-      <div class="form__information-container" [ngStyle]="{ display: !success ? 'flex' : 'none' }">
-        <h3 class="form__information-title">
-          Imate mališana od 5 i 6 godina koji obožava pjevati!?!
-        </h3>
-        <p class="form__information-text">
-          Glazbeni vrtić Posušje je pravo mjesto za sve vrste muziciranja koje Vaše dijete poželi.
-          Broj mjesta je ograničen, stoga požurite i osigurajte mjesto Vašem mališanu.
-          <br />
-          <br />
-          <b>Upisi će biti otvoreni do 8.9.2019. godine</b>.
-        </p>
-        <span class="form__information-announce">
-          Nove i uzbudljive avanture uskoro kreću!!! 🎵🎶🎤🥁
-        </span>
-      </div>
-
-      <form
-        [formGroup]="applyForm"
-        (ngSubmit)="onSubmit()"
-        [ngStyle]="{ display: !success ? 'grid' : 'none' }"
-      >
-        <div class="form__field">
-          <span
-            [ngClass]="{ active: firstName.touched && firstName.invalid }"
-            class="form__error-msg"
-          >
-            {{
-              firstName.hasError('required')
-                ? 'Ovo polje je obavezno'
-                : firstName.hasError('maxlength')
-                ? 'Tekst je predug'
-                : ''
-            }}
-          </span>
-          <input
-            formControlName="firstName"
-            type="text"
-            id="firstName"
-            class="form__input"
-            placeholder="Luka"
-            required
-          />
-          <label for="firstName" class="form__label">Ime</label>
-        </div>
-
-        <div class="form__field">
-          <span
-            [ngClass]="{ active: lastName.touched && lastName.invalid }"
-            class="form__error-msg"
-          >
-            {{
-              lastName.hasError('required')
-                ? 'Ovo polje je obavezno'
-                : lastName.hasError('maxlength')
-                ? 'Tekst je predug'
-                : ''
-            }}
-          </span>
-          <input
-            formControlName="lastName"
-            type="text"
-            id="lastName"
-            class="form__input"
-            placeholder="Modrić"
-            required
-          />
-          <label for="lastName" class="form__label">Prezime</label>
-        </div>
-
-        <div class="form__field">
-          <span
-            [ngClass]="{ active: birthdate.touched && birthdate.invalid }"
-            class="form__error-msg"
-          >
-            {{
-              birthdate.hasError('required')
-                ? 'Ovo polje je obavezno'
-                : birthdate.hasError('maxlength')
-                ? 'Neispravan format datuma'
-                : ''
-            }}
-          </span>
-          <ng-container *ngIf="!mobileQuery.matches; else mobileDatepicker">
-            <input
-              #dp="ngx-mydatepicker"
-              ngx-mydatepicker
-              [options]="myOptions"
-              [defaultMonth]="defaultMonth"
-              formControlName="birthdate"
-              type="text"
-              id="birthdate"
-              class="form__input form__date-input"
-              placeholder="25. 12. 2012."
-              required
-              readonly
-            />
-            <span class="form__date-icon" (click)="dp.toggleCalendar()">
-              <fa-icon [icon]="dateIcon"></fa-icon>
-            </span>
-          </ng-container>
-          <ng-template #mobileDatepicker>
-            <input
-              #mobdp
-              [min]="minDate | date: 'yyyy-MM-dd'"
-              [max]="maxDate | date: 'yyyy-MM-dd'"
-              formControlName="birthdate"
-              type="date"
-              class="form__input form__date-mobile"
-              placeholder="25. 12. 2012."
-              required
-            />
-            <span class="form__date-icon" (click)="mobdp.click()">
-              <fa-icon [icon]="dateIcon"></fa-icon>
-            </span>
-          </ng-template>
-
-          <label for="birthdate" class="form__label">Datum rođenja</label>
-        </div>
-
-        <div class="form__field">
-          <span
-            [ngClass]="{ active: parentsNames.touched && parentsNames.invalid }"
-            class="form__error-msg"
-          >
-            {{
-              parentsNames.hasError('required')
-                ? 'Ovo polje je obavezno'
-                : parentsNames.hasError('maxlength')
-                ? 'Tekst je predug'
-                : ''
-            }}
-          </span>
-          <input
-            formControlName="parentsNames"
-            type="text"
-            id="parentsNames"
-            class="form__input"
-            placeholder="Marija i Josip"
-            required
-          />
-          <label for="parentsNames" class="form__label">Ime oba roditelja</label>
-        </div>
-
-        <div class="form__field">
-          <span
-            [ngClass]="{ active: phoneNumber.touched && phoneNumber.invalid }"
-            class="form__error-msg"
-          >
-            {{
-              phoneNumber.hasError('required')
-                ? 'Ovo polje je obavezno'
-                : 'Neispravan format telefonskog broja'
-            }}
-          </span>
-          <input
-            formControlName="phoneNumber"
-            type="tel"
-            id="phoneNumber"
-            class="form__input"
-            placeholder="063/555-555"
-            required
-          />
-          <label for="phoneNumber" class="form__label">Telefon / Mobitel</label>
-        </div>
-
-        <div class="form__field">
-          <span [ngClass]="{ active: email.touched && email.invalid }" class="form__error-msg">
-            Neispravan email format
-          </span>
-          <input
-            formControlName="email"
-            type="email"
-            id="email"
-            class="form__input"
-            placeholder="example@mail.com"
-          />
-          <label for="email" class="form__label">Email <span>(nije obavezno)</span></label>
-        </div>
-
-        <div class="form__field message">
-          <span [ngClass]="{ active: message.touched && message.invalid }" class="form__error-msg">
-            {{ message.hasError('maxlength') ? 'Tekst je predug' : '' }}
-          </span>
-          <textarea
-            formControlName="message"
-            id="message"
-            class="form__input form__textarea"
-            placeholder="Ovdje možete dodati svoju napomenu..."
-            rows="4"
-          ></textarea>
-          <label for="message" class="form__label">Napomena <span>(nije obavezno)</span></label>
-        </div>
-
-        <div class="form__field recaptcha">
-          <ngx-invisible-recaptcha
-            #captchaElem
-            [siteKey]="'6LcjcmoUAAAAALOQ4hCEJiq9ElNiqU2xv1YMk0tf'"
-            [useGlobalDomain]="false"
-            (success)="handleSuccess($event)"
-            formControlName="recaptcha"
-          >
-          </ngx-invisible-recaptcha>
-        </div>
-
-        <div class="form__action">
-          <button
-            [disabled]="applyForm.invalid"
-            (click)="captchaElem.execute()"
-            type="button"
-            class="action-button"
-          >
-            Pošalji
-          </button>
-        </div>
-      </form>
-      <app-success-confirm *ngIf="!!success" (resetForm)="resetForm()"></app-success-confirm>
+<div class="form__content">
+  <form
+    [formGroup]="applyForm"
+    (ngSubmit)="onSubmit()"
+    [ngStyle]="{ display: !success ? 'grid' : 'none' }"
+  >
+    <div class="form__field">
+      <span [ngClass]="{ active: firstName.touched && firstName.invalid }" class="form__error-msg">
+        {{
+          firstName.hasError('required')
+            ? 'Ovo polje je obavezno'
+            : firstName.hasError('maxlength')
+            ? 'Tekst je predug'
+            : ''
+        }}
+      </span>
+      <input
+        formControlName="firstName"
+        type="text"
+        id="firstName"
+        class="form__input"
+        placeholder="Luka"
+        required
+      />
+      <label for="firstName" class="form__label">Ime</label>
     </div>
-  </div>
+
+    <div class="form__field">
+      <span [ngClass]="{ active: lastName.touched && lastName.invalid }" class="form__error-msg">
+        {{
+          lastName.hasError('required')
+            ? 'Ovo polje je obavezno'
+            : lastName.hasError('maxlength')
+            ? 'Tekst je predug'
+            : ''
+        }}
+      </span>
+      <input
+        formControlName="lastName"
+        type="text"
+        id="lastName"
+        class="form__input"
+        placeholder="Modrić"
+        required
+      />
+      <label for="lastName" class="form__label">Prezime</label>
+    </div>
+
+    <div class="form__field">
+      <span [ngClass]="{ active: birthdate.touched && birthdate.invalid }" class="form__error-msg">
+        {{
+          birthdate.hasError('required')
+            ? 'Ovo polje je obavezno'
+            : birthdate.hasError('maxlength')
+            ? 'Neispravan format datuma'
+            : ''
+        }}
+      </span>
+      <ng-container *ngIf="!mobileQuery.matches; else mobileDatepicker">
+        <input
+          #dp="ngx-mydatepicker"
+          ngx-mydatepicker
+          [options]="myOptions"
+          [defaultMonth]="defaultMonth"
+          formControlName="birthdate"
+          type="text"
+          id="birthdate"
+          class="form__input form__date-input"
+          placeholder="25. 12. 2012."
+          required
+          readonly
+        />
+        <span class="form__date-icon" (click)="dp.toggleCalendar()">
+          <fa-icon [icon]="dateIcon"></fa-icon>
+        </span>
+      </ng-container>
+      <ng-template #mobileDatepicker>
+        <input
+          #mobdp
+          [min]="minDate | date: 'yyyy-MM-dd'"
+          [max]="maxDate | date: 'yyyy-MM-dd'"
+          formControlName="birthdate"
+          type="date"
+          class="form__input form__date-mobile"
+          placeholder="25. 12. 2012."
+          required
+        />
+        <span class="form__date-icon" (click)="mobdp.click()">
+          <fa-icon [icon]="dateIcon"></fa-icon>
+        </span>
+      </ng-template>
+
+      <label for="birthdate" class="form__label">Datum rođenja</label>
+    </div>
+
+    <div class="form__field">
+      <span
+        [ngClass]="{ active: parentsNames.touched && parentsNames.invalid }"
+        class="form__error-msg"
+      >
+        {{
+          parentsNames.hasError('required')
+            ? 'Ovo polje je obavezno'
+            : parentsNames.hasError('maxlength')
+            ? 'Tekst je predug'
+            : ''
+        }}
+      </span>
+      <input
+        formControlName="parentsNames"
+        type="text"
+        id="parentsNames"
+        class="form__input"
+        placeholder="Marija i Josip"
+        required
+      />
+      <label for="parentsNames" class="form__label">Ime oba roditelja</label>
+    </div>
+
+    <div class="form__field">
+      <span
+        [ngClass]="{ active: phoneNumber.touched && phoneNumber.invalid }"
+        class="form__error-msg"
+      >
+        {{
+          phoneNumber.hasError('required')
+            ? 'Ovo polje je obavezno'
+            : 'Neispravan format telefonskog broja'
+        }}
+      </span>
+      <input
+        formControlName="phoneNumber"
+        type="tel"
+        id="phoneNumber"
+        class="form__input"
+        placeholder="063/555-555"
+        required
+      />
+      <label for="phoneNumber" class="form__label">Telefon / Mobitel</label>
+    </div>
+
+    <div class="form__field">
+      <span [ngClass]="{ active: email.touched && email.invalid }" class="form__error-msg">
+        Neispravan email format
+      </span>
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        class="form__input"
+        placeholder="example@mail.com"
+      />
+      <label for="email" class="form__label">Email <span>(nije obavezno)</span></label>
+    </div>
+
+    <div class="form__field message">
+      <span [ngClass]="{ active: message.touched && message.invalid }" class="form__error-msg">
+        {{ message.hasError('maxlength') ? 'Tekst je predug' : '' }}
+      </span>
+      <textarea
+        formControlName="message"
+        id="message"
+        class="form__input form__textarea"
+        placeholder="Ovdje možete dodati svoju napomenu..."
+        rows="4"
+      ></textarea>
+      <label for="message" class="form__label">Napomena <span>(nije obavezno)</span></label>
+    </div>
+
+    <div class="form__field recaptcha">
+      <ngx-invisible-recaptcha
+        #captchaElem
+        [siteKey]="'6LcjcmoUAAAAALOQ4hCEJiq9ElNiqU2xv1YMk0tf'"
+        [useGlobalDomain]="false"
+        (success)="handleSuccess($event)"
+        formControlName="recaptcha"
+      >
+      </ngx-invisible-recaptcha>
+    </div>
+
+    <div class="form__action">
+      <button
+        [disabled]="applyForm.invalid"
+        (click)="captchaElem.execute()"
+        type="button"
+        class="action-button"
+      >
+        Pošalji
+      </button>
+    </div>
+  </form>
+  <app-success-confirm *ngIf="!!success" (resetForm)="resetForm()"></app-success-confirm>
 </div>
 
 <app-loading *ngIf="!!loading"></app-loading>
-<app-modal
-  *ngIf="!!openModal"
-  (cancel)="openModal = false"
-  (confirm)="route.navigateByUrl(targetUrl)"
-></app-modal>

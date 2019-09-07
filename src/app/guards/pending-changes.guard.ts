@@ -1,29 +1,32 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { ApplyFormComponent } from '../components/apply-form/apply-form.component';
+import { ModalService } from '../services';
 
 export interface CanComponentDeactivate {
-  canDeactivate: (
-    targetUrl: any,
-    currentUrl: string
-  ) => Observable<boolean> | Promise<boolean> | boolean;
-  applyForm: FormGroup;
-  openModal: boolean;
+  form: ApplyFormComponent;
+  targetUrl: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PendingChangesGuard implements CanDeactivate<CanComponentDeactivate> {
+  constructor(private _modalService: ModalService) {}
+
   canDeactivate(
     component: CanComponentDeactivate,
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    _currentRoute: ActivatedRouteSnapshot,
+    _currentState: RouterStateSnapshot,
+    nextState: RouterStateSnapshot
   ) {
-    return this._hasChanges(component.applyForm) && !component.openModal
-      ? component.canDeactivate(state.root.url, state.url)
-      : true;
+    if (this._hasChanges(component.form.applyForm) && !this._modalService.confirmed) {
+      component.targetUrl = nextState.url;
+      this._modalService.setShowModal(true, false);
+      return !this._modalService.showModal$;
+    }
+    return true;
   }
 
   private _hasChanges(form: FormGroup): boolean {

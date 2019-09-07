@@ -3,9 +3,8 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { INgxMyDpOptions } from 'ngx-mydatepicker';
-import { Router } from '../../../../node_modules/@angular/router';
-import { Applicant, ISeoData } from '../../models';
-import { ApplicantsService, SeoService } from '../../services';
+import { Applicant } from '../../models';
+import { ApplicantsService } from '../../services';
 import { validateEmail, validatePhoneNumber } from '../../validators';
 import { myDatePickerOptions } from '../common/ngx-mydatepicker.options';
 
@@ -35,8 +34,6 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   formResult: any;
   loading = false;
   success = false;
-  openModal = false;
-  targetUrl: string;
 
   mobileQuery: MediaQueryList;
 
@@ -44,9 +41,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     public fb: FormBuilder,
     public changeDetectorRef: ChangeDetectorRef,
     public media: MediaMatcher,
-    public route: Router,
-    public applicantsService: ApplicantsService,
-    private _seoService: SeoService
+    public applicantsService: ApplicantsService
   ) {}
 
   private _mobileQueryListener: () => void;
@@ -54,7 +49,6 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.initFormControls();
     this.initForm();
-    this.setSeo();
     this.myOptions = myDatePickerOptions;
 
     // Detect mobile devices
@@ -65,7 +59,6 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.openModal = true;
     // this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
@@ -92,17 +85,6 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
       message: this.message,
       recaptcha: this.recaptcha
     });
-  }
-
-  setSeo() {
-    const metaData: ISeoData = {
-      url: 'upisi',
-      type: 'website',
-      linkTitle: 'Glazbaonica - Upisi u Glazbeni Vrtić',
-      description: 'Upisi u tijeku',
-      image: 'https://www.glazbaonica.com/assets/images/vrtic2.jpeg'
-    };
-    this._seoService.setTitleAndMeta('Upisi u Glazbeni Vrtić', metaData);
   }
 
   onSubmit(): void {
@@ -157,15 +139,5 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
   handleSuccess(response: any): void {
     this.recaptcha.setValue(response);
     this.onSubmit();
-  }
-
-  canDeactivate(targetUrl: string, currentUrl: string): boolean {
-    this.targetUrl = '/' + targetUrl;
-    this.route.navigateByUrl(currentUrl);
-
-    if (!this.openModal) {
-      return (this.openModal = true);
-    }
-    return true;
   }
 }

@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { ApplicantsComponent } from './applicants/applicants.component';
 import { ApplyFormComponent } from './apply-form/apply-form.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -45,7 +46,8 @@ import { SuccessConfirmComponent } from './success-confirm/success-confirm.compo
     SubheaderComponent,
     NewsPostComponent,
     NewsListComponent,
-    AboutHomeComponent
+    AboutHomeComponent,
+    EnrollmentComponent
   ],
   imports: [
     CommonModule,
