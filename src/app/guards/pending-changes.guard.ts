@@ -21,7 +21,11 @@ export class PendingChangesGuard implements CanDeactivate<CanComponentDeactivate
     _currentState: RouterStateSnapshot,
     nextState: RouterStateSnapshot
   ) {
-    if (this._hasChanges(component.form.applyForm) && !this._modalService.confirmed) {
+    if (
+      component.form &&
+      this._hasChanges(component.form.applyForm) &&
+      !this._modalService.confirmed
+    ) {
       component.targetUrl = nextState.url;
       this._modalService.setShowModal(true, false);
       return !this._modalService.showModal$;
