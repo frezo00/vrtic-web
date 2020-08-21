@@ -1,9 +1,5 @@
 <div class="form__content">
-  <form
-    [formGroup]="applyForm"
-    (ngSubmit)="onSubmit()"
-    [ngStyle]="{ display: !success ? 'grid' : 'none' }"
-  >
+  <form [formGroup]="applyForm" (ngSubmit)="onSubmit()" [ngStyle]="{ display: !success ? 'grid' : 'none' }">
     <div class="form__field">
       <span [ngClass]="{ active: firstName.touched && firstName.invalid }" class="form__error-msg">
         {{
@@ -14,14 +10,7 @@
             : ''
         }}
       </span>
-      <input
-        formControlName="firstName"
-        type="text"
-        id="firstName"
-        class="form__input"
-        placeholder="Luka"
-        required
-      />
+      <input formControlName="firstName" type="text" id="firstName" class="form__input" placeholder="Luka" required />
       <label for="firstName" class="form__label">Ime</label>
     </div>
 
@@ -35,14 +24,7 @@
             : ''
         }}
       </span>
-      <input
-        formControlName="lastName"
-        type="text"
-        id="lastName"
-        class="form__input"
-        placeholder="Modrić"
-        required
-      />
+      <input formControlName="lastName" type="text" id="lastName" class="form__input" placeholder="Modrić" required />
       <label for="lastName" class="form__label">Prezime</label>
     </div>
 
@@ -82,7 +64,7 @@
           formControlName="birthdate"
           type="date"
           class="form__input form__date-mobile"
-          placeholder="25. 12. 2012."
+          placeholder="25. 12. 2014."
           required
         />
         <span class="form__date-icon" (click)="mobdp.click()">
@@ -94,10 +76,7 @@
     </div>
 
     <div class="form__field">
-      <span
-        [ngClass]="{ active: parentsNames.touched && parentsNames.invalid }"
-        class="form__error-msg"
-      >
+      <span [ngClass]="{ active: parentsNames.touched && parentsNames.invalid }" class="form__error-msg">
         {{
           parentsNames.hasError('required')
             ? 'Ovo polje je obavezno'
@@ -118,15 +97,8 @@
     </div>
 
     <div class="form__field">
-      <span
-        [ngClass]="{ active: phoneNumber.touched && phoneNumber.invalid }"
-        class="form__error-msg"
-      >
-        {{
-          phoneNumber.hasError('required')
-            ? 'Ovo polje je obavezno'
-            : 'Neispravan format telefonskog broja'
-        }}
+      <span [ngClass]="{ active: phoneNumber.touched && phoneNumber.invalid }" class="form__error-msg">
+        {{ phoneNumber.hasError('required') ? 'Ovo polje je obavezno' : 'Neispravan format telefonskog broja' }}
       </span>
       <input
         formControlName="phoneNumber"
@@ -143,13 +115,7 @@
       <span [ngClass]="{ active: email.touched && email.invalid }" class="form__error-msg">
         Neispravan email format
       </span>
-      <input
-        formControlName="email"
-        type="email"
-        id="email"
-        class="form__input"
-        placeholder="example@mail.com"
-      />
+      <input formControlName="email" type="email" id="email" class="form__input" placeholder="example@mail.com" />
       <label for="email" class="form__label">Email <span>(nije obavezno)</span></label>
     </div>
 
@@ -168,23 +134,18 @@
     </div>
 
     <div class="form__field recaptcha">
-      <ngx-invisible-recaptcha
+      <input type="text" formControlName="recaptcha" id="recaptcha" />
+      <!-- <ngx-invisible-recaptcha
         #captchaElem
         [siteKey]="'6LcjcmoUAAAAALOQ4hCEJiq9ElNiqU2xv1YMk0tf'"
         [useGlobalDomain]="false"
         (success)="handleSuccess($event)"
         formControlName="recaptcha"
-      >
-      </ngx-invisible-recaptcha>
+      ></ngx-invisible-recaptcha> -->
     </div>
 
     <div class="form__action">
-      <button
-        [disabled]="applyForm.invalid"
-        (click)="captchaElem.execute()"
-        type="button"
-        class="action-button"
-      >
+      <button [disabled]="applyForm.invalid" type="submit" class="action-button">
         Pošalji
       </button>
     </div>

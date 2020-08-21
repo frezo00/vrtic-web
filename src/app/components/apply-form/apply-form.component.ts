@@ -136,6 +136,7 @@ export class ApplyFormComponent implements OnInit, OnDestroy {
     this.applyForm.reset();
   }
 
+  // This is no longer being used as recaptcha's Promise throws an error
   handleSuccess(response: any): void {
     this.recaptcha.setValue(response);
     this.onSubmit();

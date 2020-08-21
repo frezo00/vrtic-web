@@ -1,9 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {
-  faFacebookSquare,
-  faInstagram,
-  faWhatsappSquare
-} from '@fortawesome/free-brands-svg-icons';
+import { faFacebookSquare, faInstagram, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { CanComponentDeactivate } from '../../guards/pending-changes.guard';
@@ -32,7 +28,7 @@ export class EnrollmentComponent implements OnInit, OnDestroy, CanComponentDeact
 
   ngOnInit(): void {
     this._setSEO();
-    this.expirationDate = moment('08/09/2019', 'DD/MM/YYYY');
+    this.expirationDate = moment('13/09/2020', 'DD/MM/YYYY');
     this.isExpired = moment().isSameOrAfter(this.expirationDate, 'date');
     this.openModal$ = this._modalService.showModal$;
   }
