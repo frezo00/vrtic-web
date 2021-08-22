@@ -1,5 +1,5 @@
 <div class="enrollment-container">
-  <app-subheader [title]="'Glazbeni Vrtić'" [subtitle]="'Upisi za 2020. / 2021. godinu'"></app-subheader>
+  <app-subheader [title]="'Glazbeni Vrtić'" [subtitle]="'Upisi za 2021. / 2022. godinu'"></app-subheader>
 
   <div class="container">
     <!-- Expiration info -->
@@ -19,20 +19,16 @@
       </div>
     </div>
 
-    <div *ngIf="!isExpired" class="form__information-container" [style.display]="!success ? 'flex' : 'none'">
-      <h3 class="form__information-title">
-        Imate mališana od 5 i 6 godina koji obožava pjevati!?!
-      </h3>
+    <div *ngIf="!isExpired" class="form__information-container">
+      <h3 class="form__information-title">Imate mališana od 5 i 6 godina koji obožava pjevati!?!</h3>
       <p class="form__information-text">
         Glazbeni vrtić Posušje je pravo mjesto za sve vrste muziciranja koje Vaše dijete poželi. Broj mjesta je
         ograničen, stoga požurite i osigurajte mjesto Vašem mališanu.
         <br />
         <br />
-        <b>Upisi će biti otvoreni do 13.9.2020. godine</b>.
+        <b>Upisi će biti otvoreni do 9.9.2021. godine</b>.
       </p>
-      <span class="form__information-announce">
-        Nove i uzbudljive avanture uskoro kreću!!! 🎵🎶🎤🥁
-      </span>
+      <span class="form__information-announce"> Nove i uzbudljive avanture uskoro kreću!!! 🎵🎶🎤🥁 </span>
     </div>
 
     <app-apply-form *ngIf="!isExpired"></app-apply-form>
