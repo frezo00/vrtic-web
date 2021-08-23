@@ -82,6 +82,9 @@
     @include large {
       display: none;
     }
+    @include xlarge {
+      display: none;
+    }
     &-button {
       display: flex;
       flex-direction: column;

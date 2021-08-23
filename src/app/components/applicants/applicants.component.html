@@ -121,10 +121,7 @@
               <h4 *ngIf="applicants[i]?.email">{{ applicants[i]?.email }}</h4>
               <h4 class="no-data" *ngIf="!applicants[i]?.email">Nema podataka</h4>
             </div>
-            <div
-              class="applicants__details__box message"
-              [ngClass]="{ hasValue: !!applicants[i]?.message }"
-            >
+            <div class="applicants__details__box message" [ngClass]="{ hasValue: !!applicants[i]?.message }">
               <p>Napomena</p>
               <h4 *ngIf="applicants[i]?.message">{{ applicants[i]?.message }}</h4>
               <h4 class="no-data" *ngIf="!applicants[i]?.message">

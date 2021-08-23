@@ -18,6 +18,11 @@ export class ApplicantsComponent implements OnInit {
   activeSeason: ISeason;
   seasons: ISeason[] = [
     {
+      text: '2020/21',
+      startDate: '2020-08-19T22:00:00.000Z',
+      endDate: '2021-08-19T22:00:00.000Z'
+    },
+    {
       text: '2019/20',
       startDate: '2019-08-19T22:00:00.000Z',
       endDate: '2020-08-19T22:00:00.000Z'
@@ -41,8 +46,10 @@ export class ApplicantsComponent implements OnInit {
 
   toggleForm(): void {
     this.showForm = !this.showForm;
-    if (this.activeSeason) {
+    if (this.showForm) {
       this.activeSeason = null;
+    } else if (this.activeSeason === null) {
+      this.activeSeason = this.seasons[0];
     }
   }
 
