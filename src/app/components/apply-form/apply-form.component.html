@@ -48,7 +48,7 @@
           type="text"
           id="birthdate"
           class="form__input form__date-input"
-          placeholder="25. 12. 2012."
+          placeholder="25. 12. 2015."
           required
           readonly
         />
@@ -64,7 +64,7 @@
           formControlName="birthdate"
           type="date"
           class="form__input form__date-mobile"
-          placeholder="25. 12. 2014."
+          placeholder="25. 12. 2015."
           required
         />
         <span class="form__date-icon" (click)="mobdp.click()">
@@ -145,9 +145,7 @@
     </div>
 
     <div class="form__action">
-      <button [disabled]="applyForm.invalid" type="submit" class="action-button">
-        Pošalji
-      </button>
+      <button [disabled]="applyForm.invalid" type="submit" class="action-button">Pošalji</button>
     </div>
   </form>
   <app-success-confirm *ngIf="!!success" (resetForm)="resetForm()"></app-success-confirm>

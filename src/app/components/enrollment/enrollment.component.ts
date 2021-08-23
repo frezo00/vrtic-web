@@ -28,7 +28,7 @@ export class EnrollmentComponent implements OnInit, OnDestroy, CanComponentDeact
 
   ngOnInit(): void {
     this._setSEO();
-    this.expirationDate = moment('13/09/2020', 'DD/MM/YYYY');
+    this.expirationDate = moment('09/09/2021', 'DD/MM/YYYY');
     this.isExpired = moment().isSameOrAfter(this.expirationDate, 'date');
     this.openModal$ = this._modalService.showModal$;
   }

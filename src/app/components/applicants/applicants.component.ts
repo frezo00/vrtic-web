@@ -18,6 +18,11 @@ export class ApplicantsComponent implements OnInit {
   activeSeason: ISeason;
   seasons: ISeason[] = [
     {
+      text: '2021/22',
+      startDate: '2021-08-20T22:00:00.000Z',
+      endDate: '2022-08-22T22:00:00.000Z'
+    },
+    {
       text: '2020/21',
       startDate: '2020-08-19T22:00:00.000Z',
       endDate: '2021-08-19T22:00:00.000Z'
