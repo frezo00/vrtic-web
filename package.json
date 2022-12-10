@@ -37,7 +37,7 @@
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
     "angularfire-lite": "^6.0.3",
     "core-js": "^2.6.9",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase": "^8.10.0",
     "moment": "^2.24.0",
     "ngx-captcha": "^7.0.0",
